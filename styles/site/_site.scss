@@ -1,0 +1,213 @@
+// ----- Mixins -----
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+// ----- Base styles -----
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  padding-top: 90px;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #333;
+  background-color: #fff;
+}
+
+a {
+  color: #1976D2;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover, &:focus {
+    color: #2196F3;
+  }
+}
+
+// Type
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+
+  small {
+    font-size: 60%;
+  }
+}
+h1, h2, h3 {
+  margin: 20px 0;
+}
+h4, h5, h6 {
+  margin: 10px 0;
+}
+
+h1 { font-size: 38px; }
+h2 { font-size: 34px; }
+h3 { font-size: 26px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 14px; }
+
+p {
+  margin: 0 0 15px 0;
+}
+
+strong {
+  font-weight: 400;
+}
+
+
+
+// ----- Layout -----
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include clearfix();  
+}
+
+// Bootstrap grid example
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;  
+  }
+
+    .col-xs-4 {
+      position: relative;
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+      min-height: 1px;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+    }
+
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
+}
+
+
+// ----- Header and footer -----
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 15px 0;
+  color: #fff;
+  background-color: #1976D2;
+  box-shadow: 0 0 6px 6px rgba(0,0,0,0.1);
+}
+
+  .logo-text {
+    margin: 0;
+
+    @media (max-width: 767px) {
+      font-size: 25px;
+    }
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+  }
+
+  .header--links {
+
+    .btn {
+      margin: 0;
+      margin-top: 7px;
+
+      &:last-child {
+        margin-left: 7px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      float: right;
+    }
+  }
+
+.footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+// ----- Demo -----
+.demo {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.demo--intro {
+  border-bottom: 1px solid #ddd;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #bbb;
+  padding: 4px 12px 6px 12px;
+  font-size: 18px;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: background-color .3s, color .3s;
+
+  &:hover, &:active {
+    background-color: #f3f3f3;
+  }
+}
+
+.btn-white {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+}
+
+.install .btn {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+pre {
+  display: block;
+  padding: 10px 15px;
+  margin: 0 0 20px 0;
+  overflow: auto;
+  font-family: 'Cutive Mono', monospace;
+  font-size: 14px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f3f3f3;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}

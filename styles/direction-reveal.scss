@@ -1,0 +1,323 @@
+// ----- Variables -----
+$anim-duration: .3s;
+$anim-easing: ease;
+
+
+
+// ----- Classes -----
+.direction-reveal {
+
+}
+
+  .direction-reveal__card {
+    display: inline-block; // block also works
+    position: relative;
+    overflow: hidden;
+    perspective: 400px;
+  }
+
+    .direction-reveal__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate3d(0, -100%, 0); // Hide by default
+
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      color: #fff;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, .6);
+
+      animation-duration: $anim-duration;
+      animation-timing-function: $anim-easing;
+      animation-fill-mode: forwards;
+    }
+
+      .direction-reveal__title {
+        margin-top: 0;
+      }
+
+      .direction-reveal__text {
+        margin-bottom: 0;
+      }
+
+
+// 3x3 grid layout
+.direction-reveal--3-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+
+  .direction-reveal__card {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    // Transparent border used for spacing as this gives the direction detection more area to use.
+    border: 15px solid transparent;
+  }
+  
+}
+    
+
+// ----- Animations -----
+// Swing animation
+
+.direction-reveal > [class*='swing--'] {
+  .direction-reveal__overlay {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+}
+
+.swing--in-top, .swing--out-top {
+  perspective-origin: center top;
+  
+  .direction-reveal__overlay {
+    transform-origin: center top;
+  }
+}
+
+.swing--in-top {
+  .direction-reveal__overlay {
+    animation-name: swing-in-top;
+  }
+}
+
+.swing--out-top {
+  .direction-reveal__overlay {
+    animation-name: swing-out-top;
+  }
+}
+
+
+.swing--in-bottom, .swing--out-bottom {
+  perspective-origin: center bottom;
+  
+  .direction-reveal__overlay {
+    transform-origin: center bottom;
+  }
+}
+
+.swing--in-bottom {
+  .direction-reveal__overlay {
+    animation-name: swing-in-bottom;
+  }
+}
+
+.swing--out-bottom {
+  .direction-reveal__overlay {
+    animation-name: swing-out-bottom;
+  }
+}
+
+
+.swing--in-left, .swing--out-left {
+  perspective-origin: left center;
+  
+  .direction-reveal__overlay {
+    transform-origin: left center;
+  }
+}
+
+.swing--in-left {
+  .direction-reveal__overlay {
+    animation-name: swing-in-left;
+  }
+}
+
+.swing--out-left {
+  .direction-reveal__overlay {
+    animation-name: swing-out-left;
+  }
+}
+
+
+.swing--in-right, .swing--out-right {
+  perspective-origin: right center;
+  
+  .direction-reveal__overlay {
+    transform-origin: right center;
+  }
+}
+
+.swing--in-right {
+  .direction-reveal__overlay {
+    animation-name: swing-in-right;
+  }
+}
+
+.swing--out-right {
+  .direction-reveal__overlay {
+    animation-name: swing-out-right;
+  }
+}
+
+
+// Animations
+@keyframes swing-in-top {
+  0% {
+    transform: rotate3d(-1, 0, 0, 90deg);
+  }
+}
+
+@keyframes swing-out-top {
+  100% {
+    transform: rotate3d(-1, 0, 0, 90deg);
+  }
+}
+
+
+@keyframes swing-in-bottom {
+  0% {
+    transform: rotate3d(1, 0, 0, 90deg);
+  }
+}
+
+@keyframes swing-out-bottom {
+  100% {
+    transform: rotate3d(1, 0, 0, 90deg);
+  }
+}
+
+
+@keyframes swing-in-left {
+  0% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+}
+
+@keyframes swing-out-left {
+  100% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+}
+
+
+@keyframes swing-in-right {
+  0% {
+    transform: rotate3d(0, -1, 0, 90deg);
+  }
+}
+
+@keyframes swing-out-right {
+  100% {
+    transform: rotate3d(0, -1, 0, 90deg);
+  }
+}
+
+
+
+// Slide animation
+
+// Default visible state - used as start or end points for the keyframe animations
+.direction-reveal > [class*='slide--'] {
+  .direction-reveal__overlay {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+}
+
+.slide--in-top {
+  .direction-reveal__overlay {
+    animation-name: slide-in-top;
+  }
+}
+
+.slide--out-top {
+  .direction-reveal__overlay {
+    animation-name: slide-out-top;
+  }
+}
+
+
+.slide--in-bottom {
+  .direction-reveal__overlay {
+    animation-name: slide-in-bottom;
+  }
+}
+
+.slide--out-bottom {
+  .direction-reveal__overlay {
+    animation-name: slide-out-bottom;
+  }
+}
+
+
+.slide--in-left {
+  .direction-reveal__overlay {
+    animation-name: slide-in-left;
+  }
+}
+
+.slide--out-left {
+  .direction-reveal__overlay {
+    animation-name: slide-out-left;
+  }
+}
+
+
+.slide--in-right {
+  .direction-reveal__overlay {
+    animation-name: slide-in-right;
+  }
+}
+
+.slide--out-right {
+  .direction-reveal__overlay {
+    animation-name: slide-out-right;
+  }
+}
+
+
+@keyframes slide-in-top {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes slide-out-top {
+  100% {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes slide-out-bottom {
+  100% {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+
+@keyframes slide-in-left {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes slide-out-left {
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+
+@keyframes slide-in-right {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes slide-out-right {
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}

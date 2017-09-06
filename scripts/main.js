@@ -1,0 +1,13 @@
+import DirectionReveal from './direction-reveal.js';
+
+// Swing animation(Default)
+const directionReveal = DirectionReveal({
+  selector: '.direction-reveal--demo-swing'
+});
+
+// Swipe animation 
+const directionRevealSlide = DirectionReveal({
+  selector: '.direction-reveal--demo-slide',
+  itemSelector: '.direction-reveal__card',
+  animationName: 'slide'
+});
