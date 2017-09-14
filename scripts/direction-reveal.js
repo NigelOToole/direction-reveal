@@ -21,8 +21,7 @@ const DirectionReveal = function({
     // Width and height of current item
     let w = item.offsetWidth;
     let h = item.offsetHeight;
-
-    let position = getPosition(item);
+    let position = _getPosition(item);
 
     // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
     let x = (e.pageX - position.x - (w / 2) * (w > h ? (h / w) : 1));
@@ -36,24 +35,15 @@ const DirectionReveal = function({
     return d;
   };
 
+
   // https://www.kirupa.com/html5/get_element_position_using_javascript.htm
-  function getPosition(el) {
-    var xPos = 0;
-    var yPos = 0;
+  const _getPosition = function (el) {
+    let xPos = 0;
+    let yPos = 0;
    
     while (el) {
-      if (el.tagName == "BODY") {
-        // deal with browser quirks with body/window/document and page scroll
-        var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-        var yScroll = el.scrollTop || document.documentElement.scrollTop;
-   
-        xPos += (el.offsetLeft + el.clientLeft);
-        yPos += (el.offsetTop + el.clientTop);
-      } else {
-        // for all other non-BODY elements
-        xPos += (el.offsetLeft + el.clientLeft);
-        yPos += (el.offsetTop + el.clientTop);
-      }
+      xPos += (el.offsetLeft + el.clientLeft);
+      yPos += (el.offsetTop + el.clientTop);
    
       el = el.offsetParent;
     }
@@ -89,16 +79,25 @@ const DirectionReveal = function({
     
     items.forEach((item) => {
                         
-      item.addEventListener('mouseenter', function (e) {
+      _addEventListenerMulti(item, ['mouseenter', 'focus'], function(e) {
         _addClass(e, 'in');
       });
-    
-      item.addEventListener('mouseleave', function (e) {
+
+      // item.addEventListener('touchstart', function(e) {
+      //   e.preventDefault();
+      //   _addClass(e, 'in');
+      // });
+      
+      _addEventListenerMulti(item, ['mouseleave', 'blur'], function(e) {
         _addClass(e, 'out');
       });
 
     });
   };
+
+  const _addEventListenerMulti = function (element, events, fn) {
+    events.forEach((e) => element.addEventListener(e, fn));
+  }
 
 
   const init = function () {

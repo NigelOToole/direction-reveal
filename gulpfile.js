@@ -24,15 +24,6 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
-// gulp.task('scripts', () => {
-//   return gulp.src('assets/scripts/**/*.js')
-//     .pipe($.plumber())
-//     .pipe($.sourcemaps.init())
-//     .pipe($.babel())
-//     .pipe($.sourcemaps.write('.'))
-//     .pipe(gulp.dest('assets/scripts'))
-//     .pipe(reload({stream: true}));
-// });
 
 gulp.task('scripts', () => {
   const browserifyBundle = browserify({

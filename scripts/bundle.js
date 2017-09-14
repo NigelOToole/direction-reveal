@@ -29,8 +29,7 @@ var DirectionReveal = function DirectionReveal() {
     // Width and height of current item
     var w = item.offsetWidth;
     var h = item.offsetHeight;
-
-    var position = getPosition(item);
+    var position = _getPosition(item);
 
     // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
     var x = e.pageX - position.x - w / 2 * (w > h ? h / w : 1);
@@ -45,23 +44,13 @@ var DirectionReveal = function DirectionReveal() {
   };
 
   // https://www.kirupa.com/html5/get_element_position_using_javascript.htm
-  function getPosition(el) {
+  var _getPosition = function _getPosition(el) {
     var xPos = 0;
     var yPos = 0;
 
     while (el) {
-      if (el.tagName == "BODY") {
-        // deal with browser quirks with body/window/document and page scroll
-        var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-        var yScroll = el.scrollTop || document.documentElement.scrollTop;
-
-        xPos += el.offsetLeft + el.clientLeft;
-        yPos += el.offsetTop + el.clientTop;
-      } else {
-        // for all other non-BODY elements
-        xPos += el.offsetLeft + el.clientLeft;
-        yPos += el.offsetTop + el.clientTop;
-      }
+      xPos += el.offsetLeft + el.clientLeft;
+      yPos += el.offsetTop + el.clientTop;
 
       el = el.offsetParent;
     }
@@ -69,7 +58,7 @@ var DirectionReveal = function DirectionReveal() {
       x: xPos,
       y: yPos
     };
-  }
+  };
 
   var _translateDirection = switchcase({
     0: 'top',
@@ -97,13 +86,24 @@ var DirectionReveal = function DirectionReveal() {
 
     items.forEach(function (item) {
 
-      item.addEventListener('mouseenter', function (e) {
+      _addEventListenerMulti(item, ['mouseenter', 'focus'], function (e) {
         _addClass(e, 'in');
       });
 
-      item.addEventListener('mouseleave', function (e) {
+      // item.addEventListener('touchstart', function(e) {
+      //   e.preventDefault();
+      //   _addClass(e, 'in');
+      // });
+
+      _addEventListenerMulti(item, ['mouseleave', 'blur'], function (e) {
         _addClass(e, 'out');
       });
+    });
+  };
+
+  var _addEventListenerMulti = function _addEventListenerMulti(element, events, fn) {
+    events.forEach(function (e) {
+      return element.addEventListener(e, fn);
     });
   };
 
