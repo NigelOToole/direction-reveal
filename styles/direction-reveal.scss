@@ -1,16 +1,17 @@
 // ----- Variables -----
 $anim-duration: .3s;
 $anim-easing: ease;
+$grid-spacing: 10px;
 
 
 
-// ----- Classes -----
+// ----- Component -----
 .direction-reveal {
 
 }
 
   .direction-reveal__card {
-    display: block; // block also works
+    display: inline-block; // block also works
     position: relative;
     overflow: hidden;
     perspective: 400px;
@@ -43,24 +44,6 @@ $anim-easing: ease;
       }
 
 
-// 3x3 grid layout
-.direction-reveal--3-grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-
-  .direction-reveal__card {
-    width: 100%;
-    min-height: 1px;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-    // Transparent border used for spacing as this gives the direction detection more area to use.
-    border: 15px solid transparent;
-  }
-  
-}
-    
 
 // ----- Animations -----
 // Swing animation
@@ -318,5 +301,44 @@ $anim-easing: ease;
 @keyframes slide-out-right {
   100% {
     transform: translate3d(100%, 0, 0);
+  }
+}
+
+
+
+// ----- Layouts -----
+// 3x3 grid layout - flexbox
+.direction-reveal--3-grid-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$grid-spacing;
+  margin-left: -$grid-spacing;
+
+  .direction-reveal__card {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    border: $grid-spacing solid transparent; // Transparent border used for spacing as this gives the direction detection more area to use.
+  }
+  
+}
+
+// 3x3 grid layout - CSS grid
+.direction-reveal--3-grid-cssgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-right: -$grid-spacing;
+  margin-left: -$grid-spacing;
+
+  .direction-reveal__card {
+    border: $grid-spacing solid transparent;
+  }
+  
+}
+
+// Bootstrap grid
+.direction-reveal--grid-bootstrap {
+  .direction-reveal__card {
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 }

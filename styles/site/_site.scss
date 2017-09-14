@@ -94,14 +94,19 @@ strong {
     margin-left: -15px;  
   }
 
-    .col-4 {
+    .col-sm-4 {
       position: relative;
       width: 100%;
       padding-left: 15px;
       padding-right: 15px;
       min-height: 1px;
-      flex: 0 0 33.333333%;
-      max-width: 33.333333%;
+    }
+
+    @media (min-width: 576px) {
+      .col-sm-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+      }
     }
 
 
