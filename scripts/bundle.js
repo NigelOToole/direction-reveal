@@ -37,6 +37,8 @@ var DirectionReveal = function DirectionReveal() {
     // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
     var d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
 
+    console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop]);
+
     return d;
   };
 
@@ -122,11 +124,16 @@ var directionReveal = (0, _directionReveal2.default)({
   selector: '.direction-reveal--demo-swing'
 });
 
-// Swipe animation 
+// Swipe animation with all options specified
 var directionRevealSlide = (0, _directionReveal2.default)({
   selector: '.direction-reveal--demo-slide',
   itemSelector: '.direction-reveal__card',
   animationName: 'slide'
+});
+
+// Bootstrap demo
+var directionRevealBoostrap = (0, _directionReveal2.default)({
+  selector: '.direction-reveal--demo-bootstrap'
 });
 
 },{"./direction-reveal.js":1}]},{},[2])

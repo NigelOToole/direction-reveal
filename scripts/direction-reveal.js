@@ -25,9 +25,11 @@ const DirectionReveal = function({
     // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
     let x = (e.pageX - item.offsetLeft - (w / 2) * (w > h ? (h / w) : 1));
     let y = (e.pageY - item.offsetTop - (h / 2) * (h > w ? (w / h) : 1));
-
+    
     // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
     let d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
+
+    // console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop]);
   
     return d;
   };

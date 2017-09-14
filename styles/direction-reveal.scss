@@ -10,7 +10,7 @@ $anim-easing: ease;
 }
 
   .direction-reveal__card {
-    display: inline-block; // block also works
+    display: block; // block also works
     position: relative;
     overflow: hidden;
     perspective: 400px;
@@ -51,7 +51,6 @@ $anim-easing: ease;
   margin-left: -15px;
 
   .direction-reveal__card {
-    position: relative;
     width: 100%;
     min-height: 1px;
     flex: 0 0 33.333333%;
@@ -66,7 +65,7 @@ $anim-easing: ease;
 // ----- Animations -----
 // Swing animation
 
-.direction-reveal > [class*='swing--'] {
+.direction-reveal [class*='swing--'] {
   .direction-reveal__overlay {
     transform: rotate3d(0, 0, 0, 0);
   }
@@ -213,7 +212,7 @@ $anim-easing: ease;
 // Slide animation
 
 // Default visible state - used as start or end points for the keyframe animations
-.direction-reveal > [class*='slide--'] {
+.direction-reveal [class*='slide--'] {
   .direction-reveal__overlay {
     transform: rotate3d(0, 0, 0, 0);
   }
