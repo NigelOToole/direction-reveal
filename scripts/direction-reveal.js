@@ -6,12 +6,14 @@
   @param {string} selector Container element selector.
   @param {string} itemSelector Item element selector.
   @param {string} animationName Animation CSS class.
+  @param {bollean} enableTouch Adds touch event to show content on first click then follow link on the second click.
 */
 
 const DirectionReveal = function({
   selector: selector = '.direction-reveal',
   itemSelector: itemSelector = '.direction-reveal__card',
-  animationName: animationName = 'swing'
+  animationName: animationName = 'swing',
+  enableTouch: enableTouch = true
 } = {}) {
 
   const containers = document.querySelectorAll(selector);
@@ -78,19 +80,25 @@ const DirectionReveal = function({
     const items = containerItem.querySelectorAll(itemSelector);
     
     items.forEach((item) => {
-                        
+      
+      
       _addEventListenerMulti(item, ['mouseenter', 'focus'], function(e) {
         _addClass(e, 'in');
       });
-
-      // item.addEventListener('touchstart', function(e) {
-      //   e.preventDefault();
-      //   _addClass(e, 'in');
-      // });
       
       _addEventListenerMulti(item, ['mouseleave', 'blur'], function(e) {
         _addClass(e, 'out');
       });
+
+      if (enableTouch) {
+        item.addEventListener('touchstart', function(e) {
+          if (item.getAttribute('data-hover') === null) {
+            e.preventDefault();
+            item.setAttribute('data-hover', 'true');
+          }
+          _addClass(e, 'in');
+        });
+      }
 
     });
   };

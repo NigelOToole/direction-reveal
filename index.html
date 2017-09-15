@@ -39,23 +39,23 @@
 
     <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-swing">
       
-      <div class="direction-reveal__card" tabindex="0">
+      <a href="#" class="direction-reveal__card" tabindex="0">
         <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
     
         <div class="direction-reveal__overlay">
           <h3 class="direction-reveal__title">Lorem ipsum</h3>
           <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
         </div>
-      </div>
+      </a>
     
-      <div class="direction-reveal__card" tabindex="0">
+      <a href="#" class="direction-reveal__card" tabindex="0">
         <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
         
         <div class="direction-reveal__overlay">
           <h3 class="direction-reveal__title">Lorem ipsum</h3>
           <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
         </div>
-      </div>
+      </a>
     
       <a href="#" class="direction-reveal__card">
         <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
@@ -199,17 +199,6 @@
             </div>
           </a>
         </div>     
-
-        <div class="col-sm-4">
-          <a href="#" class="direction-reveal__card">
-            <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
-            
-            <div class="direction-reveal__overlay">
-              <h3 class="direction-reveal__title">Lorem ipsum</h3>
-              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-            </div>
-          </a>
-        </div>     
       
       </div>
       
@@ -235,43 +224,49 @@
 
       <p>The script is an ES6(ES2015) module so your site build process needs to accomodate this, Babel and Browserify are used in the demo site.</p>
 
-<pre>
-<code>// Import module
+<pre><code>// Import module
 import DirectionReveal from './direction-reveal.js';
 
 // Init with default setup
 const directionReveal = DirectionReveal();
   
-// Init with all options
+// Init with all options at default setting
 const directionReveal = DirectionReveal({
-  selector: '.direction-reveal--demo-slide',  // The container element.
-  itemSelector: '.direction-reveal__card',    // Content blocks.
-  animationName: 'slide'                      // Animation name.
+  selector: '.direction-reveal',              // Container element selector.
+  itemSelector: '.direction-reveal__card',    // Item element selector.
+  animationName: 'slide',                     // Animation CSS class.
+  enableTouch: true                           // Adds touch event to show content on first click then follow link on the second click.
 });
 </code></pre>
 
-<!-- Using a div instead of an a tag, adding the tabindex ensures keyboard navigation works.
-<pre>
-  <code>
-      <div class="direction-reveal__card" tabindex="0"></div>
-  </code></pre> -->
+      <h3>Touch support</h3>
+
+      <p>The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled in the options.</p>
+
+      <h3>Using other tags</h3>
+      
+      <p>The demos use a tags for the "direction-reveal__card" but a div can be used as below, specifiying the tabindex ensures keyboard navigation works as expected.</p>
+
+<pre><code>&lt;div class="direction-reveal__card" tabindex="0"&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
   
 
                     
       <h3>Run demo site</h3>
       <p>Clone or download from github.</p>
-<pre>
-<code>$ npm install
-$ gulp serve</code></pre>
+
+<pre><code>$ npm install
+$ gulp serve
+</code></pre>
 
     </div>
   </div>
 
 
   <div class="container">
-    <p>Inspired by a codepen from <a href="https://codepen.io/noeldelgado/pen/pGwFx" target="_blank">Noel Delgado</a>, this <a href="https://stackoverflow.com/a/3647634" target="_blank">Stack overflow answer</a> and the article <a href="https://www.kirupa.com/html5/get_element_position_using_javascript.htm" target="_blank">Get an Element's postion using javascript</a>.<br>
-
-    <a href="https://unsplash.com">Images from Unsplash</a>
+    <p>Inspired by a codepen from <a href="https://codepen.io/noeldelgado/pen/pGwFx" target="_blank">Noel Delgado</a>, this <a href="https://stackoverflow.com/a/3647634" target="_blank">Stack overflow answer</a> and the article <a href="https://www.kirupa.com/html5/get_element_position_using_javascript.htm" target="_blank">Get an Element's postion using javascript</a>. <a href="https://unsplash.com" target="_blank">Images from Unsplash.</a>
     </p>
   </div>
     
