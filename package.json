@@ -1,8 +1,8 @@
 {
   "name": "direction-reveal",
   "description": "Direction aware content reveals.",
-  "version": "0.4.0",
-  "main": "assets/scripts/direction-reveal.js",
+  "version": "0.5.0",
+  "main": "scripts/direction-reveal.js",
   "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,8 @@
   },
   "keywords": [
     "javascript",
+    "es6",
+    "module",
     "sass",
     "css",
     "reveal",

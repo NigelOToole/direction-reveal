@@ -100,7 +100,7 @@
   <div class="container demo">
     <h3 class="">Slide animation</h3>
 
-    <div class="direction-reveal direction-reveal--3-grid-cssgrid direction-reveal--demo-slide">
+    <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-slide">
       
       <a href="#" class="direction-reveal__card">
         <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
@@ -225,7 +225,7 @@
       <p>The script is an ES6(ES2015) module so your site build process needs to accomodate this, Babel and Browserify are used in the demo site.</p>
 
 <pre><code>// Import module
-import DirectionReveal from './direction-reveal.js';
+import DirectionReveal from 'direction-reveal';
 
 // Init with default setup
 const directionReveal = DirectionReveal();

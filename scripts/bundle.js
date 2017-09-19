@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", {
   @param {string} itemSelector Item element selector.
   @param {string} animationName Animation CSS class.
   @param {bollean} enableTouch Adds touch event to show content on first click then follow link on the second click.
+  @param {integer} touchThreshold Touch must be less than this to trigger reveal, prevents event triggering if user is scrolling.
 */
 
 var DirectionReveal = function DirectionReveal() {
@@ -24,9 +25,12 @@ var DirectionReveal = function DirectionReveal() {
       _ref$animationName = _ref.animationName,
       animationName = _ref$animationName === undefined ? 'swing' : _ref$animationName,
       _ref$enableTouch = _ref.enableTouch,
-      enableTouch = _ref$enableTouch === undefined ? true : _ref$enableTouch;
+      enableTouch = _ref$enableTouch === undefined ? true : _ref$enableTouch,
+      _ref$touchThreshold = _ref.touchThreshold,
+      touchThreshold = _ref$touchThreshold === undefined ? 250 : _ref$touchThreshold;
 
   var containers = document.querySelectorAll(selector);
+  var touchStart = void 0;
 
   var _getDirection = function _getDirection(e, item) {
     // Width and height of current item
@@ -41,7 +45,7 @@ var DirectionReveal = function DirectionReveal() {
     // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
     var d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
 
-    console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop, position.x, position.y]);
+    // console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop, position.x, position.y]);
 
     return d;
   };
@@ -98,12 +102,19 @@ var DirectionReveal = function DirectionReveal() {
       });
 
       if (enableTouch) {
+
         item.addEventListener('touchstart', function (e) {
-          if (item.getAttribute('data-hover') === null) {
+          touchStart = +new Date();
+        });
+
+        item.addEventListener('touchend', function (e) {
+          var touchTime = +new Date() - touchStart;
+
+          if (touchTime < touchThreshold && item.getAttribute('data-hover') === null) {
             e.preventDefault();
             item.setAttribute('data-hover', 'true');
+            _addClass(e, 'in');
           }
-          _addClass(e, 'in');
         });
       }
     });
@@ -165,7 +176,8 @@ var directionReveal = (0, _directionReveal2.default)({
 var directionRevealSlide = (0, _directionReveal2.default)({
   selector: '.direction-reveal--demo-slide',
   itemSelector: '.direction-reveal__card',
-  animationName: 'slide'
+  animationName: 'slide',
+  enableTouch: false
 });
 
 // Bootstrap demo

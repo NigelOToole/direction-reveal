@@ -7,17 +7,20 @@
   @param {string} itemSelector Item element selector.
   @param {string} animationName Animation CSS class.
   @param {bollean} enableTouch Adds touch event to show content on first click then follow link on the second click.
+  @param {integer} touchThreshold Touch must be less than this to trigger reveal, prevents event triggering if user is scrolling.
 */
 
 const DirectionReveal = function({
   selector: selector = '.direction-reveal',
   itemSelector: itemSelector = '.direction-reveal__card',
   animationName: animationName = 'swing',
-  enableTouch: enableTouch = true
+  enableTouch: enableTouch = true,
+  touchThreshold: touchThreshold = 250
 } = {}) {
 
   const containers = document.querySelectorAll(selector);
-  
+  let touchStart;
+
 
   const _getDirection = function (e, item) {
     // Width and height of current item
@@ -32,7 +35,7 @@ const DirectionReveal = function({
     // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
     let d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
 
-    console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop, position.x, position.y]);
+    // console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop, position.x, position.y]);
   
     return d;
   };
@@ -78,9 +81,8 @@ const DirectionReveal = function({
   
   const _bindEvents = function (containerItem) {
     const items = containerItem.querySelectorAll(itemSelector);
-    
-    items.forEach((item) => {
-      
+
+    items.forEach((item) => {   
       
       _addEventListenerMulti(item, ['mouseenter', 'focus'], function(e) {
         _addClass(e, 'in');
@@ -91,13 +93,21 @@ const DirectionReveal = function({
       });
 
       if (enableTouch) {
+
         item.addEventListener('touchstart', function(e) {
-          if (item.getAttribute('data-hover') === null) {
+          touchStart = +new Date;
+        });
+
+        item.addEventListener('touchend', function(e) {
+          let touchTime = +new Date - touchStart;
+
+          if (touchTime < touchThreshold && item.getAttribute('data-hover') === null) {
             e.preventDefault();
             item.setAttribute('data-hover', 'true');
+            _addClass(e, 'in');
           }
-          _addClass(e, 'in');
         });
+
       }
 
     });
