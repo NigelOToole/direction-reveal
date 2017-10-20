@@ -1,7 +1,7 @@
 {
   "name": "direction-reveal",
   "description": "Direction aware content reveals.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "main": "scripts/direction-reveal.js",
   "dependencies": {},
   "scripts": {
