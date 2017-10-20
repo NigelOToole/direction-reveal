@@ -7,13 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 
 /** 
   Direction aware content reveals.
-
-  @param {Object} Options object.
-  @param {string} selector Container element selector.
-  @param {string} itemSelector Item element selector.
-  @param {string} animationName Animation CSS class.
-  @param {bollean} enableTouch Adds touch event to show content on first click then follow link on the second click.
-  @param {integer} touchThreshold Touch must be less than this to trigger reveal, prevents event triggering if user is scrolling.
+  
+  @param {Object} object - Object for all options.
+  @param {string} selector - Container element selector.
+  @param {string} itemSelector - Item element selector.
+  @param {string} animationName - Animation CSS class.
+  @param {bollean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
+  @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
 */
 
 var DirectionReveal = function DirectionReveal() {
@@ -172,12 +172,18 @@ var directionReveal = (0, _directionReveal2.default)({
   selector: '.direction-reveal--demo-swing'
 });
 
-// Swipe animation with all options specified
+// Slide animation with all options specified
 var directionRevealSlide = (0, _directionReveal2.default)({
   selector: '.direction-reveal--demo-slide',
   itemSelector: '.direction-reveal__card',
   animationName: 'slide',
-  enableTouch: false
+  enableTouch: true
+});
+
+// Rotate animation
+var directionRevealRotate = (0, _directionReveal2.default)({
+  selector: '.direction-reveal--demo-rotate',
+  animationName: 'rotate'
 });
 
 // Bootstrap demo

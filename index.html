@@ -97,6 +97,7 @@
       
   </div>
 
+
   <div class="container demo">
     <h3 class="">Slide animation</h3>
 
@@ -159,6 +160,71 @@
     </div>
 
   </div>
+
+
+  <div class="container demo">
+    <h3 class="">Rotate animation</h3>
+
+    <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-rotate">
+      
+      <a href="#" class="direction-reveal__card">
+        <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
+    
+        <div class="direction-reveal__overlay">
+          <h3 class="direction-reveal__title">Lorem ipsum</h3>
+          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+        </div>
+      </a>
+    
+      <a href="#" class="direction-reveal__card">
+        <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
+        
+        <div class="direction-reveal__overlay">
+          <h3 class="direction-reveal__title">Lorem ipsum</h3>
+          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+        </div>
+      </a>
+    
+      <a href="#" class="direction-reveal__card">
+        <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
+        
+        <div class="direction-reveal__overlay">
+          <h3 class="direction-reveal__title">Lorem ipsum</h3>
+          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+        </div>
+      </a>
+      
+      <a href="#" class="direction-reveal__card">
+        <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
+    
+        <div class="direction-reveal__overlay">
+          <h3 class="direction-reveal__title">Lorem ipsum</h3>
+          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+        </div>
+      </a>
+    
+      <a href="#" class="direction-reveal__card">
+        <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
+        
+        <div class="direction-reveal__overlay">
+          <h3 class="direction-reveal__title">Lorem ipsum</h3>
+          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+        </div>
+      </a>
+    
+      <a href="#" class="direction-reveal__card">
+        <img src="images/nebula.jpg" alt="Mountain" class="img-fluid">
+        
+        <div class="direction-reveal__overlay">
+          <h3 class="direction-reveal__title">Lorem ipsum</h3>
+          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+        </div>
+      </a>
+          
+    </div>
+
+  </div>
+  
 
   <div class="container demo">
     <h3 class="">Bootstrap 4 grid integration</h3>
@@ -234,8 +300,9 @@ const directionReveal = DirectionReveal();
 const directionReveal = DirectionReveal({
   selector: '.direction-reveal',              // Container element selector.
   itemSelector: '.direction-reveal__card',    // Item element selector.
-  animationName: 'slide',                     // Animation CSS class.
-  enableTouch: true                           // Adds touch event to show content on first click then follow link on the second click.
+  animationName: 'swing',                     // Animation CSS class.
+  enableTouch: true,                          // Adds touch event to show content on first click then follow link on the second click.
+  touchThreshold: 250                         // Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
 });
 </code></pre>
 
@@ -245,7 +312,7 @@ const directionReveal = DirectionReveal({
 
       <h3>Using other tags</h3>
       
-      <p>The demos use a tags for the "direction-reveal__card" but a div can be used as below, specifiying the tabindex ensures keyboard navigation works as expected.</p>
+      <p>The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; can be used as below, specifiying the tabindex ensures keyboard navigation works as expected. They can all have a value of 0 and will follow the source order of the divs.</p>
 
 <pre><code>&lt;div class="direction-reveal__card" tabindex="0"&gt;
   ...

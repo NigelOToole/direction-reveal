@@ -1,6 +1,8 @@
 // ----- Variables -----
 $anim-duration: .3s;
-$anim-easing: ease;
+$anim-easing-easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$anim-easing-easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$anim-easing: $anim-easing-easeOutCubic;
 $grid-spacing: 10px;
 
 
@@ -21,7 +23,7 @@ $grid-spacing: 10px;
       position: absolute;
       top: 0;
       left: 0;
-      transform: translate3d(0, -100%, 0); // Hide by default
+      transform: translate3d(0, -100%, 0); // Initial position before any animation i.e. hidden by default
 
       width: 100%;
       height: 100%;
@@ -48,6 +50,7 @@ $grid-spacing: 10px;
 // ----- Animations -----
 // Swing animation
 
+// Default visible state after animation - used as start or end points for the keyframe animations
 .direction-reveal [class*='swing--'] {
   .direction-reveal__overlay {
     transform: rotate3d(0, 0, 0, 0);
@@ -194,10 +197,9 @@ $grid-spacing: 10px;
 
 // Slide animation
 
-// Default visible state - used as start or end points for the keyframe animations
 .direction-reveal [class*='slide--'] {
   .direction-reveal__overlay {
-    transform: rotate3d(0, 0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -342,3 +344,149 @@ $grid-spacing: 10px;
     margin-bottom: 15px;
   }
 }
+
+
+
+
+
+
+
+
+
+// Rotate animation
+
+.direction-reveal [class*='rotate--'] {
+  .direction-reveal__overlay {
+    transform: rotate(0);
+  }
+}
+
+.rotate--in-top, .rotate--out-top {  
+  .direction-reveal__overlay {
+    transform-origin: left top;
+  }
+}
+
+.rotate--in-top {
+  .direction-reveal__overlay {
+    animation-name: rotate-in-top;
+  }
+}
+
+.rotate--out-top {
+  .direction-reveal__overlay {
+    animation-name: rotate-out-top;
+  }
+}
+
+
+.rotate--in-bottom, .rotate--out-bottom {  
+  .direction-reveal__overlay {
+    transform-origin: left bottom;
+  }
+}
+
+.rotate--in-bottom {
+  .direction-reveal__overlay {
+    animation-name: rotate-in-bottom;
+  }
+}
+
+.rotate--out-bottom {
+  .direction-reveal__overlay {
+    animation-name: rotate-out-bottom;
+  }
+}
+
+
+.rotate--in-left, .rotate--out-left {
+  .direction-reveal__overlay {
+    transform-origin: left top;
+  }
+}
+
+.rotate--in-left {
+  .direction-reveal__overlay {
+    animation-name: rotate-in-left;
+  }
+}
+
+.rotate--out-left {
+  .direction-reveal__overlay {
+    animation-name: rotate-out-left;
+  }
+}
+
+
+.rotate--in-right, .rotate--out-right {
+  .direction-reveal__overlay {
+    transform-origin: right top;
+  }
+}
+
+.rotate--in-right {
+  .direction-reveal__overlay {
+    animation-name: rotate-in-right;
+  }
+}
+
+.rotate--out-right {
+  .direction-reveal__overlay {
+    animation-name: rotate-out-right;
+  }
+}
+
+
+// Animations
+@keyframes rotate-in-top {
+  0% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotate-out-top {
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+
+@keyframes rotate-in-bottom {
+  0% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-out-bottom {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+
+@keyframes rotate-in-left {
+  0% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-out-left {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+
+@keyframes rotate-in-right {
+  0% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotate-out-right {
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+
