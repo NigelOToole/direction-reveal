@@ -2,7 +2,7 @@
 @mixin animation-classes($animation-name) {
 
   $directions-list: in out;
-  $positions-list: top bottom left right;
+  $positions-list:  top bottom left right;
   
   @each $direction in $directions-list {
     @each $position in $positions-list {
