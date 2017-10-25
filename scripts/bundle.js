@@ -8,7 +8,7 @@ Object.defineProperty(exports, "__esModule", {
 /** 
   Direction aware content reveals.
   
-  @param {Object} object - Object for all options.
+  @param {Object} object - Container for all options.
   @param {string} selector - Container element selector.
   @param {string} itemSelector - Item element selector.
   @param {string} animationName - Animation CSS class.
