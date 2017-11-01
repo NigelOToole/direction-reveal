@@ -11,7 +11,7 @@ This plugin detects the side a user enters and exits a block, allowing you to re
 Once you have downloaded the code, run the commands below to view the demo.
 
 ```javascript
-$ npm install
+$ npm install direction-reveal --save-dev
 $ gulp serve
 ```
 

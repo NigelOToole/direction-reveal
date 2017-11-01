@@ -16,7 +16,7 @@ const DirectionReveal = function({
   animationName: animationName = 'swing',
   enableTouch: enableTouch = true,
   touchThreshold: touchThreshold = 250
-} = {}) {
+  } = {}) {
 
   const containers = document.querySelectorAll(selector);
   let touchStart;
