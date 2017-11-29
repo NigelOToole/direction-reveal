@@ -40,20 +40,19 @@ const directionRevealSwing = DirectionReveal({
 ### HTML
 
 ```html
-  &lt;div class="direction-reveal"&gt;
+<div class="direction-reveal">
 
-    &lt;a href="#" class="direction-reveal__card"&gt;
-      &lt;img src="images/image.jpg" alt="Image" class="img-fluid"&gt;
+  <a href="#" class="direction-reveal__card">
+    <img src="images/image.jpg" alt="Image" class="img-fluid">
 
-      &lt;div class="direction-reveal__overlay"&gt;
-        &lt;h3 class="direction-reveal__title"&gt;Title&lt;/h3&gt;
-        &lt;p class="direction-reveal__text"&gt;Description text.&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/a&gt;
+    <div class="direction-reveal__overlay">
+      <h3 class="direction-reveal__title">Title</h3>
+      <p class="direction-reveal__text">Description text.</p>
+    </div>
+  </a>
 
-    ...
-
-  &lt;/div&gt;
+  ...
+</div>
 ```
 
 
@@ -61,9 +60,9 @@ const directionRevealSwing = DirectionReveal({
 The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; can be used as below, specifiying the tabindex ensures keyboard navigation works as expected. They can all have a value of 0 and will follow the source order of the divs.
 
 ```html
-&lt;div class="direction-reveal__card" tabindex="0"&gt;
+<div class="direction-reveal__card" tabindex="0">
   ...
-&lt;/div&gt;
+</div>
 ```
 
 ### Touch support
