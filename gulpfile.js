@@ -25,7 +25,9 @@ gulp.task('styles', () => {
 });
 
 
+// Compiles scripts for browser
 gulp.task('scripts', () => {
+
   const browserifyBundle = browserify({
     entries: `scripts/main.js`,
     transform: babelify,
@@ -40,10 +42,23 @@ gulp.task('scripts', () => {
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(`scripts`))
     .pipe(reload({ stream: true }))
+
 });
 
 
-gulp.task('serve', ['styles'], () => {
+// Compiles scripts to UMD for NPM
+gulp.task('scriptsNPM', () => {
+  return gulp.src('scripts/direction-reveal.js')
+    .pipe($.plumber())
+    .pipe($.babel({
+      plugins: ['transform-es2015-modules-umd']
+    }))
+    .pipe($.rename('index.js'))
+    .pipe(gulp.dest('./'))
+});
+
+
+gulp.task('serve', ['styles', 'scripts', 'scriptsNPM'], () => {
   browserSync.init({
     notify: false,
     port: 9000,
@@ -52,14 +67,9 @@ gulp.task('serve', ['styles'], () => {
     }
   });
 
-  gulp.watch([
-    '*.html'
-    // 'styles/**/*',
-    // 'scripts/**/*'
-  ]).on('change', reload);
-
+  gulp.watch(['*.html']).on('change', reload);
   gulp.watch('styles/**/*.scss', ['styles']);
-  gulp.watch('scripts/**/*.js', ['scripts']);
+  gulp.watch('scripts/**/*.js', ['scripts', 'scriptsNPM']);
 });
 
 gulp.task('default', ['serve']);

@@ -1,7 +1,7 @@
 
-/** 
+/**
   Direction aware content reveals.
-  
+
   @param {Object} object - Container for all options.
   @param {string} selector - Container element selector.
   @param {string} itemSelector - Item element selector.
@@ -31,12 +31,12 @@ const DirectionReveal = function({
     // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
     let x = (e.pageX - position.x - (w / 2) * (w > h ? (h / w) : 1));
     let y = (e.pageY - position.y - (h / 2) * (h > w ? (w / h) : 1));
-    
+
     // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
     let d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
 
     // console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop, position.x, position.y]);
-  
+
     return d;
   };
 
@@ -45,11 +45,11 @@ const DirectionReveal = function({
   const _getPosition = function (el) {
     let xPos = 0;
     let yPos = 0;
-   
+
     while (el) {
       xPos += (el.offsetLeft + el.clientLeft);
       yPos += (el.offsetTop + el.clientTop);
-   
+
       el = el.offsetParent;
     }
     return {
@@ -57,14 +57,14 @@ const DirectionReveal = function({
       y: yPos
     };
   }
-    
+
   const _translateDirection = switchcase({
     0: 'top',
     1: 'right',
     2: 'bottom',
     3: 'left'
   })('top');
-  
+
 
   const _addClass = function (e, state) {
     let currentItem = e.currentTarget;
@@ -78,16 +78,16 @@ const DirectionReveal = function({
     currentItem.classList.add(`${animationName}--${state}-${directionString}`);
   };
 
-  
+
   const _bindEvents = function (containerItem) {
     const items = containerItem.querySelectorAll(itemSelector);
 
-    items.forEach((item) => {   
-      
+    items.forEach((item) => {
+
       _addEventListenerMulti(item, ['mouseenter', 'focus'], function(e) {
         _addClass(e, 'in');
       });
-      
+
       _addEventListenerMulti(item, ['mouseleave', 'blur'], function(e) {
         _addClass(e, 'out');
       });

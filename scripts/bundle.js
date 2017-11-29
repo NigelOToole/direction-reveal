@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-/** 
+/**
   Direction aware content reveals.
-  
+
   @param {Object} object - Container for all options.
   @param {string} selector - Container element selector.
   @param {string} itemSelector - Item element selector.
@@ -168,7 +168,7 @@ var _directionReveal2 = _interopRequireDefault(_directionReveal);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Swing animation(Default)
-var directionReveal = (0, _directionReveal2.default)({
+var directionRevealSwing = (0, _directionReveal2.default)({
   selector: '.direction-reveal--demo-swing'
 });
 
