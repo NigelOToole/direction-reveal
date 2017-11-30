@@ -292,8 +292,7 @@
 
       <p>The script is an ES6(ES2015) module but a compiled version is included in the build as index.js. You can also copy scripts/direction-reveal.js into your own site if your build process can accomodate ES6 modules, Babel and Browserify are used in the demo site.</p>
 
-<pre><code>
-import DirectionReveal from 'direction-reveal';
+<pre><code>import DirectionReveal from 'direction-reveal';
 
 // Init with default setup
 const directionRevealDemo = DirectionReveal();
@@ -309,23 +308,22 @@ const directionRevealSwing = DirectionReveal({
 </code></pre>
 
 
-      <h3>HTML</h3>
+      <h3>Markup</h3>
 
-<pre><code>
-  &lt;div class="direction-reveal"&gt;
+<pre><code>&lt;div class="direction-reveal"&gt;
 
-    &lt;a href="#" class="direction-reveal__card"&gt;
-      &lt;img src="images/image.jpg" alt="Image" class="img-fluid"&gt;
+  &lt;a href="#" class="direction-reveal__card"&gt;
+    &lt;img src="images/image.jpg" alt="Image" class="img-fluid"&gt;
 
-      &lt;div class="direction-reveal__overlay"&gt;
-        &lt;h3 class="direction-reveal__title"&gt;Title&lt;/h3&gt;
-        &lt;p class="direction-reveal__text"&gt;Description text.&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/a&gt;
+    &lt;div class="direction-reveal__overlay"&gt;
+      &lt;h3 class="direction-reveal__title"&gt;Title&lt;/h3&gt;
+      &lt;p class="direction-reveal__text"&gt;Description text.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
 
-    ...
+  ...
 
-  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 
 
@@ -339,9 +337,16 @@ const directionRevealSwing = DirectionReveal({
 </code></pre>
 
 
+<h3>Styles</h3>
+
+    <p>Import the styles into your project directly from the node_modules as below or copy the styles into your own project, you will need styles/direction-reveal.scss, styles/_animations.scss and styles/_variables.scss. There is also a compiled CSS file you can use, styles/direction-reveal.css.</p>
+
+<pre><code>@import "node_modules/direction-reveal/styles/direction-reveal.scss";</code></pre>
+
+
       <h3>Touch support</h3>
 
-      <p>The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled in the options.</p>
+      <p>The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled with the option enableTouch.</p>
 
     </div>
 

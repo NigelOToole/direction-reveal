@@ -37,7 +37,7 @@ const directionRevealSwing = DirectionReveal({
 ```
 
 
-### HTML
+### Markup
 
 ```html
 <div class="direction-reveal">
@@ -65,8 +65,16 @@ The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; 
 </div>
 ```
 
+### Styles
+
+Import the styles into your project directly from the node_modules as below or copy the styles into your own project, you will need styles/direction-reveal.scss, styles/_animations.scss and styles/_variables.scss. There is also a compiled CSS file you can use, styles/direction-reveal.css.
+
+```html
+@import "node_modules/direction-reveal/styles/direction-reveal.scss";
+```
+
 ### Touch support
-The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled in the options.
+The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled with the option enableTouch.
 
 
 
