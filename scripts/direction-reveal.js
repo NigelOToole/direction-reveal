@@ -71,7 +71,7 @@ const DirectionReveal = function({
     let direction = _getDirection(e, currentItem);
     let directionString = _translateDirection(direction);
 
-    // Remove current animation classes and add current one.
+    // Remove current animation classes and add new ones e.g. swap --in for --out.
     let currentCssClasses = currentItem.className.split(' ');
     let filteredCssClasses = currentCssClasses.filter((cssClass) => (!cssClass.startsWith(animationName))).join(' ');
     currentItem.className = filteredCssClasses;
@@ -92,6 +92,7 @@ const DirectionReveal = function({
         _addClass(e, 'out');
       });
 
+
       if (enableTouch) {
 
         item.addEventListener('touchstart', function(e) {
@@ -101,10 +102,10 @@ const DirectionReveal = function({
         item.addEventListener('touchend', function(e) {
           let touchTime = +new Date - touchStart;
 
-          if (touchTime < touchThreshold && item.getAttribute('data-hover') === null) {
+          if (touchTime < touchThreshold && !item.className.includes(`${animationName}--in`)) {
             e.preventDefault();
-            item.setAttribute('data-hover', 'true');
-            _addClass(e, 'in');
+
+            _resetVisible(e, items, _addClass(e, 'in'));
           }
         });
 
@@ -116,6 +117,20 @@ const DirectionReveal = function({
   const _addEventListenerMulti = function (element, events, fn) {
     events.forEach((e) => element.addEventListener(e, fn));
   }
+
+
+  const _resetVisible = function (e, items, callback) {
+
+    items.forEach((item) => {
+      let currentCssClasses = item.className;
+
+      if(currentCssClasses.includes(`${animationName}--in`) && item !== e.currentTarget) {
+        item.className = currentCssClasses.replace(`${animationName}--in`, `${animationName}--out`);
+      }
+    });
+
+    callback;
+  };
 
 
   const init = function () {

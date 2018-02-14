@@ -79,7 +79,7 @@ var DirectionReveal = function DirectionReveal() {
     var direction = _getDirection(e, currentItem);
     var directionString = _translateDirection(direction);
 
-    // Remove current animation classes and add current one.
+    // Remove current animation classes and add new ones e.g. swap --in for --out.
     var currentCssClasses = currentItem.className.split(' ');
     var filteredCssClasses = currentCssClasses.filter(function (cssClass) {
       return !cssClass.startsWith(animationName);
@@ -110,10 +110,10 @@ var DirectionReveal = function DirectionReveal() {
         item.addEventListener('touchend', function (e) {
           var touchTime = +new Date() - touchStart;
 
-          if (touchTime < touchThreshold && item.getAttribute('data-hover') === null) {
+          if (touchTime < touchThreshold && !item.className.includes(animationName + '--in')) {
             e.preventDefault();
-            item.setAttribute('data-hover', 'true');
-            _addClass(e, 'in');
+
+            _resetVisible(e, items, _addClass(e, 'in'));
           }
         });
       }
@@ -124,6 +124,19 @@ var DirectionReveal = function DirectionReveal() {
     events.forEach(function (e) {
       return element.addEventListener(e, fn);
     });
+  };
+
+  var _resetVisible = function _resetVisible(e, items, callback) {
+
+    items.forEach(function (item) {
+      var currentCssClasses = item.className;
+
+      if (currentCssClasses.includes(animationName + '--in') && item !== e.currentTarget) {
+        item.className = currentCssClasses.replace(animationName + '--in', animationName + '--out');
+      }
+    });
+
+    callback;
   };
 
   var init = function init() {
