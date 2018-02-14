@@ -190,7 +190,8 @@ var directionRevealSlide = (0, _directionReveal2.default)({
   selector: '.direction-reveal--demo-slide',
   itemSelector: '.direction-reveal__card',
   animationName: 'slide',
-  enableTouch: true
+  enableTouch: true,
+  touchThreshold: 250
 });
 
 // Rotate animation

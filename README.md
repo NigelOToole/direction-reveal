@@ -77,6 +77,9 @@ Import the styles into your project directly from the node_modules as below or c
 The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled with the option enableTouch.
 
 
+### Browser support
+Supports all modern browsers(Firefox, Chrome and Edge) released as of January 2018. For older browsers you may need to include polyfills for Nodelist.forEach and Element.classList.
+
 
 ## Demo site
 Clone or download from Github.

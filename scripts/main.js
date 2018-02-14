@@ -10,7 +10,8 @@ const directionRevealSlide = DirectionReveal({
   selector: '.direction-reveal--demo-slide',
   itemSelector: '.direction-reveal__card',
   animationName: 'slide',
-  enableTouch: true
+  enableTouch: true,
+  touchThreshold: 250
 });
 
 // Rotate animation
