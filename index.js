@@ -44,11 +44,11 @@
     var containers = document.querySelectorAll(selector);
     var touchStart = void 0;
 
-    var _getDirection = function _getDirection(e, item) {
+    var getDirection = function getDirection(e, item) {
       // Width and height of current item
       var w = item.offsetWidth;
       var h = item.offsetHeight;
-      var position = _getPosition(item);
+      var position = getPosition(item);
 
       // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
       var x = e.pageX - position.x - w / 2 * (w > h ? h / w : 1);
@@ -63,7 +63,7 @@
     };
 
     // https://www.kirupa.com/html5/get_element_position_using_javascript.htm
-    var _getPosition = function _getPosition(el) {
+    var getPosition = function getPosition(el) {
       var xPos = 0;
       var yPos = 0;
 
@@ -79,17 +79,17 @@
       };
     };
 
-    var _translateDirection = switchcase({
+    var translateDirection = switchcase({
       0: 'top',
       1: 'right',
       2: 'bottom',
       3: 'left'
     })('top');
 
-    var _addClass = function _addClass(e, state) {
+    var addClass = function addClass(e, state) {
       var currentItem = e.currentTarget;
-      var direction = _getDirection(e, currentItem);
-      var directionString = _translateDirection(direction);
+      var direction = getDirection(e, currentItem);
+      var directionString = translateDirection(direction);
 
       // Remove current animation classes and add new ones e.g. swap --in for --out.
       var currentCssClasses = currentItem.className.split(' ');
@@ -100,17 +100,17 @@
       currentItem.classList.add(animationName + '--' + state + '-' + directionString);
     };
 
-    var _bindEvents = function _bindEvents(containerItem) {
+    var bindEvents = function bindEvents(containerItem) {
       var items = containerItem.querySelectorAll(itemSelector);
 
       items.forEach(function (item) {
 
-        _addEventListenerMulti(item, ['mouseenter', 'focus'], function (e) {
-          _addClass(e, 'in');
+        addEventListenerMulti(item, ['mouseenter', 'focus'], function (e) {
+          addClass(e, 'in');
         });
 
-        _addEventListenerMulti(item, ['mouseleave', 'blur'], function (e) {
-          _addClass(e, 'out');
+        addEventListenerMulti(item, ['mouseleave', 'blur'], function (e) {
+          addClass(e, 'out');
         });
 
         if (enableTouch) {
@@ -125,20 +125,20 @@
             if (touchTime < touchThreshold && !item.className.includes(animationName + '--in')) {
               e.preventDefault();
 
-              _resetVisible(e, items, _addClass(e, 'in'));
+              resetVisible(e, items, addClass(e, 'in'));
             }
           });
         }
       });
     };
 
-    var _addEventListenerMulti = function _addEventListenerMulti(element, events, fn) {
+    var addEventListenerMulti = function addEventListenerMulti(element, events, fn) {
       events.forEach(function (e) {
         return element.addEventListener(e, fn);
       });
     };
 
-    var _resetVisible = function _resetVisible(e, items, callback) {
+    var resetVisible = function resetVisible(e, items, callback) {
 
       items.forEach(function (item) {
         var currentCssClasses = item.className;
@@ -155,7 +155,7 @@
 
       if (containers.length) {
         containers.forEach(function (containerItem) {
-          _bindEvents(containerItem);
+          bindEvents(containerItem);
         });
       } else {
         return;

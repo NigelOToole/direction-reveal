@@ -14,10 +14,22 @@ const directionRevealSlide = DirectionReveal({
   touchThreshold: 250
 });
 
+// Slide & push
+const directionRevealSlidePush = DirectionReveal({
+  selector: '.direction-reveal--demo-slide-push',
+  animationName: 'slide'
+});
+
 // Rotate animation
 const directionRevealRotate = DirectionReveal({
   selector: '.direction-reveal--demo-rotate',
   animationName: 'rotate'
+});
+
+// Flip animation
+const directionRevealFlip = DirectionReveal({
+  selector: '.direction-reveal--demo-flip',
+  animationName: 'flip'
 });
 
 // Bootstrap demo

@@ -10,6 +10,7 @@
   @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
 */
 
+
 const DirectionReveal = function({
   selector: selector = '.direction-reveal',
   itemSelector: itemSelector = '.direction-reveal__card',
@@ -22,11 +23,11 @@ const DirectionReveal = function({
   let touchStart;
 
 
-  const _getDirection = function (e, item) {
+  const getDirection = function (e, item) {
     // Width and height of current item
     let w = item.offsetWidth;
     let h = item.offsetHeight;
-    let position = _getPosition(item);
+    let position = getPosition(item);
 
     // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
     let x = (e.pageX - position.x - (w / 2) * (w > h ? (h / w) : 1));
@@ -42,7 +43,7 @@ const DirectionReveal = function({
 
 
   // https://www.kirupa.com/html5/get_element_position_using_javascript.htm
-  const _getPosition = function (el) {
+  const getPosition = function (el) {
     let xPos = 0;
     let yPos = 0;
 
@@ -58,7 +59,8 @@ const DirectionReveal = function({
     };
   }
 
-  const _translateDirection = switchcase({
+
+  const translateDirection = switchcase({
     0: 'top',
     1: 'right',
     2: 'bottom',
@@ -66,10 +68,10 @@ const DirectionReveal = function({
   })('top');
 
 
-  const _addClass = function (e, state) {
+  const addClass = function (e, state) {
     let currentItem = e.currentTarget;
-    let direction = _getDirection(e, currentItem);
-    let directionString = _translateDirection(direction);
+    let direction = getDirection(e, currentItem);
+    let directionString = translateDirection(direction);
 
     // Remove current animation classes and add new ones e.g. swap --in for --out.
     let currentCssClasses = currentItem.className.split(' ');
@@ -79,17 +81,17 @@ const DirectionReveal = function({
   };
 
 
-  const _bindEvents = function (containerItem) {
+  const bindEvents = function (containerItem) {
     const items = containerItem.querySelectorAll(itemSelector);
 
     items.forEach((item) => {
 
-      _addEventListenerMulti(item, ['mouseenter', 'focus'], function(e) {
-        _addClass(e, 'in');
+      addEventListenerMulti(item, ['mouseenter', 'focus'], function(e) {
+        addClass(e, 'in');
       });
 
-      _addEventListenerMulti(item, ['mouseleave', 'blur'], function(e) {
-        _addClass(e, 'out');
+      addEventListenerMulti(item, ['mouseleave', 'blur'], function(e) {
+        addClass(e, 'out');
       });
 
 
@@ -105,7 +107,7 @@ const DirectionReveal = function({
           if (touchTime < touchThreshold && !item.className.includes(`${animationName}--in`)) {
             e.preventDefault();
 
-            _resetVisible(e, items, _addClass(e, 'in'));
+            resetVisible(e, items, addClass(e, 'in'));
           }
         });
 
@@ -114,12 +116,12 @@ const DirectionReveal = function({
     });
   };
 
-  const _addEventListenerMulti = function (element, events, fn) {
+  const addEventListenerMulti = function (element, events, fn) {
     events.forEach((e) => element.addEventListener(e, fn));
   }
 
 
-  const _resetVisible = function (e, items, callback) {
+  const resetVisible = function (e, items, callback) {
 
     items.forEach((item) => {
       let currentCssClasses = item.className;
@@ -137,7 +139,7 @@ const DirectionReveal = function({
 
     if (containers.length) {
       containers.forEach((containerItem) => {
-        _bindEvents(containerItem);
+        bindEvents(containerItem);
       });
     }
     else {

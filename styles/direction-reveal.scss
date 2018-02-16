@@ -16,18 +16,24 @@
       position: absolute;
       top: 0;
       left: 0;
-      transform: translate3d(0, -100%, 0); // Initial position before any animation i.e. hidden by default
-
       width: 100%;
       height: 100%;
       padding: 15px;
       color: #fff;
       overflow: hidden;
       background-color: rgba(0, 0, 0, .6);
+    }
 
+    // .direction-reveal__anim--in is used to animate in hidden content, the default animation used on the overlay
+    // .direction-reveal__anim--out is used to animate out visible content
+    .direction-reveal__anim--in, .direction-reveal__anim--out {
       animation-duration: $anim-duration;
       animation-timing-function: $anim-easing-easeOutQuad;
       animation-fill-mode: forwards;
+    }
+
+    .direction-reveal__anim--in {
+      transform: translate3d(0, -100%, 0); // Initial position before any animation i.e. hidden by default
     }
 
       .direction-reveal__title {
@@ -65,7 +71,7 @@
 
   .direction-reveal__card {
     border: $grid-spacing solid transparent;
-  } 
+  }
 }
 
 // Bootstrap grid
