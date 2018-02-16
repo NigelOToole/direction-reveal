@@ -45,7 +45,7 @@ const directionRevealSwing = DirectionReveal({
   <a href="#" class="direction-reveal__card">
     <img src="images/image.jpg" alt="Image" class="img-fluid">
 
-    <div class="direction-reveal__overlay">
+    <div class="direction-reveal__overlay direction-reveal__anim--in">
       <h3 class="direction-reveal__title">Title</h3>
       <p class="direction-reveal__text">Description text.</p>
     </div>
