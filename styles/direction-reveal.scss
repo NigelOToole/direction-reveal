@@ -9,7 +9,6 @@
     display: inline-block;
     position: relative;
     overflow: hidden;
-    perspective: 400px;
   }
 
     .direction-reveal__overlay {
@@ -58,7 +57,7 @@
   .direction-reveal__card {
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
-    border: $grid-spacing solid transparent; // Transparent border used for spacing as this gives the direction detection more area to use.
+    border: $grid-spacing solid transparent; // Transparent border used for spacing as this make direction detection more accurate as there is more area to detect.
   }
 }
 

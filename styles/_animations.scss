@@ -41,6 +41,8 @@
 
 // Default visible state after animation - used as start or end points for the keyframe animations
 .direction-reveal [class*='swing--'] {
+  perspective: 400px;
+
   .direction-reveal__anim--in, .direction-reveal__anim--out {
     transform: rotate3d(0, 0, 0, 0);
     animation-timing-function: $anim-easing-easeOutCubic;
@@ -272,5 +274,72 @@
 @keyframes rotate--out-right {
   100% {
     transform: rotate(-90deg);
+  }
+}
+
+
+
+// Flip animation
+
+@include animation-classes('flip');
+
+.direction-reveal [class*='flip--'] {
+  perspective: 800px;
+  overflow: visible;
+
+  .direction-reveal__anim--in, .direction-reveal__anim--out {
+    transform: rotateX(0) rotateY(0); // Order must be the same as the animations
+    animation-timing-function: $anim-easing-easeInOutQuad;
+    animation-duration: $anim-duration*2;
+    backface-visibility: hidden;
+    z-index: 1;
+  }
+}
+
+@keyframes flip--in-top {
+  0% {
+    transform: rotateX(180deg) rotateY(0);
+  }
+}
+
+@keyframes flip--out-top {
+  100% {
+    transform: rotateX(180deg) rotateY(0);
+  }
+}
+
+@keyframes flip--in-bottom {
+  0% {
+    transform: rotateX(-180deg) rotateY(0);
+  }
+}
+
+@keyframes flip--out-bottom {
+  100% {
+    transform: rotateX(-180deg) rotateY(0);
+  }
+}
+
+@keyframes flip--in-left {
+  0% {
+    transform: rotateX(0) rotateY(-180deg);
+  }
+}
+
+@keyframes flip--out-left {
+  100% {
+    transform: rotateX(0) rotateY(-180deg);
+  }
+}
+
+@keyframes flip--in-right {
+  0% {
+    transform: rotateX(0) rotateY(180deg);
+  }
+}
+
+@keyframes flip--out-right {
+  100% {
+    transform: rotateX(0) rotateY(180deg);
   }
 }
