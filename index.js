@@ -117,7 +117,7 @@
 
           item.addEventListener('touchstart', function (e) {
             touchStart = +new Date();
-          });
+          }, { passive: true });
 
           item.addEventListener('touchend', function (e) {
             var touchTime = +new Date() - touchStart;

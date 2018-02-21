@@ -11,7 +11,7 @@
 */
 
 
-const DirectionReveal = function({
+const DirectionReveal = function ({
   selector: selector = '.direction-reveal',
   itemSelector: itemSelector = '.direction-reveal__card',
   animationName: animationName = 'swing',
@@ -86,22 +86,22 @@ const DirectionReveal = function({
 
     items.forEach((item) => {
 
-      addEventListenerMulti(item, ['mouseenter', 'focus'], function(e) {
+      addEventListenerMulti(item, ['mouseenter', 'focus'], (e) => {
         addClass(e, 'in');
       });
 
-      addEventListenerMulti(item, ['mouseleave', 'blur'], function(e) {
+      addEventListenerMulti(item, ['mouseleave', 'blur'], (e) => {
         addClass(e, 'out');
       });
 
 
       if (enableTouch) {
 
-        item.addEventListener('touchstart', function(e) {
+        item.addEventListener('touchstart', (e) => {
           touchStart = +new Date;
-        });
+        }, { passive: true });
 
-        item.addEventListener('touchend', function(e) {
+        item.addEventListener('touchend', (e) => {
           let touchTime = +new Date - touchStart;
 
           if (touchTime < touchThreshold && !item.className.includes(`${animationName}--in`)) {

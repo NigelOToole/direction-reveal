@@ -24,13 +24,18 @@ html {
 }
 
 body {
-  padding-top: 90px;
+  padding-top: 110px;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: 300;
   line-height: 1.4;
   color: #333;
   background-color: #fff;
+
+  @media (min-width: 768px) {
+    padding-top: 90px;
+  }
+
 }
 
 a {
@@ -83,7 +88,7 @@ strong {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  @include clearfix();  
+  @include clearfix();
 }
 
 // Bootstrap grid example
@@ -91,7 +96,7 @@ strong {
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
-    margin-left: -15px;  
+    margin-left: -15px;
   }
 
     .col-sm-4 {
@@ -151,7 +156,7 @@ strong {
         margin-left: 7px;
       }
     }
-    
+
     @media (min-width: 768px) {
       float: right;
     }
@@ -167,12 +172,17 @@ strong {
 
 // ----- Demo -----
 .demo {
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 
 .demo--intro {
+  margin-top: 20px;
   border-bottom: 1px solid #ddd;
+
+  p:last-child {
+    padding-bottom: 20px;
+  }
 }
 
 .btn {
