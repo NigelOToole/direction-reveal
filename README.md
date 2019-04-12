@@ -18,7 +18,7 @@ $ npm install direction-reveal --save-dev
 
 ### Import
 
-The script is an ES6(ES2015) module but a compiled version is included in the build as index.js. You can also copy scripts/direction-reveal.js into your own site if your build process can accomodate ES6 modules, Babel and Browserify are used in the demo site.
+The script is an ES6(ES2015) module but a compiled version is included in the build as index.js. You can also copy scripts/direction-reveal.js into your own site if your build process can accommodate ES6 modules, Babel and Browserify are used in the demo site.
 
 ```javascript
 import DirectionReveal from 'direction-reveal';
@@ -57,7 +57,7 @@ const directionRevealSwing = DirectionReveal({
 
 
 ### Using other tags
-The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; can be used as below, specifiying the tabindex ensures keyboard navigation works as expected. They can all have a value of 0 and will follow the source order of the divs.
+The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; can be used as below, specifying the tabindex ensures keyboard navigation works as expected. They can all have a value of 0 and will follow the source order of the divs.
 
 ```html
 <div class="direction-reveal__card" tabindex="0">

@@ -1,7 +1,7 @@
 {
   "name": "direction-reveal",
   "description": "Direction aware content reveals.",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "main": "index.js",
   "esnext": "scripts/direction-reveal.js",
   "module": "scripts/direction-reveal.js",

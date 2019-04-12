@@ -63,7 +63,7 @@ gulp.task('serve', ['styles', 'scripts', 'scriptsNPM'], () => {
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['']
+      baseDir: ['./']
     }
   });
 

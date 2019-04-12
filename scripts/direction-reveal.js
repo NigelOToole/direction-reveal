@@ -6,7 +6,7 @@
   @param {string} selector - Container element selector.
   @param {string} itemSelector - Item element selector.
   @param {string} animationName - Animation CSS class.
-  @param {bollean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
+  @param {boolean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
   @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
 */
 
