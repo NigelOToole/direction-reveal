@@ -30,8 +30,8 @@ const DirectionReveal = function ({
     let position = getPosition(item);
 
     // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
-    let x = (e.pageX - position.x - (w / 2) * (w > h ? (h / w) : 1));
-    let y = (e.pageY - position.y - (h / 2) * (h > w ? (w / h) : 1));
+    let x = (e.pageX - position.x - (w / 2)) * (w > h ? (h / w) : 1);
+    let y = (e.pageY - position.y - (h / 2)) * (h > w ? (w / h) : 1);
 
     // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
     let d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;

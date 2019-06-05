@@ -6,424 +6,434 @@
     <title>Direction Reveal - Direction aware content reveals</title>
 
     <link rel="stylesheet" href="styles/site.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono|Open+Sans:300,400&display=swap">
+
     <link rel="stylesheet" href="styles/direction-reveal.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono|Lato:300,400">
   </head>
 
   <body>
 
-  <header class="header">
-    <div class="container">
+    <header class="header">
+      <div class="container">
 
-      <h1 class="logo-text">Direction Reveal</h1>
+        <h1 class="logo-text">Direction Reveal</h1>
 
-      <div class="header--links">
-        <a href="https://github.com/NigelOToole/direction-reveal/archive/master.zip" class="btn btn-white">Download</a>
-        <a href="https://github.com/NigelOToole/direction-reveal" target="_blank" rel="noopener" class="btn btn-white">View on GitHub</a>
+        <nav class="header-links">
+          <a href="https://github.com/NigelOToole/direction-reveal/archive/master.zip" class="btn-demo btn-demo--white">Download</a>
+          <a href="https://github.com/NigelOToole/direction-reveal" target="_blank" rel="noopener" class="btn-demo btn-demo--white">View on GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+
+    <div class="fullwidth">
+      <div class="container separator">
+        <h2>A Javascript plugin to detect which direction a user enters/exits a block, allowing you to reveal/hide content based on this direction.</h2>
+        <p>The hidden content can animate in from the direction the user enters and animate out the direction the user leaves, allowing you to create interesting animation effects.</p>
       </div>
     </div>
-  </header>
 
 
-  <div class="demo demo--intro container">
-    <h2>Direction aware content reveals.</h2>
-    <p>This plugin detects which direction a user enters/exits a block, allowing you to reveal/hide content based on this direction.</p>
-    <p>The hidden content can animate in from the direction the user enters and animate out the direction the user leaves, allowing you to create interesting animation effects.</p>
-  </div>
+    <div class="fullwidth">
+      <div class="container separator">
 
+        <h3>Swing animation</h3>
 
-  <div class="container demo">
-    <h2>Examples</h2>
+        <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-swing">
 
-    <h3>Swing animation</h3>
-
-    <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-swing">
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-1.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card" >
-        <img src="images/mountain-2.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-3.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-4.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-5.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-6.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="container demo">
-    <h3 class="">Slide animation</h3>
-
-    <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-slide">
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-1.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-2.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-3.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-4.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-5.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-6.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="container demo">
-    <h3 class="">Slide &amp; Push animation</h3>
-
-    <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-slide-push">
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-4.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-5.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-6.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="container demo">
-    <h3 class="">Rotate animation</h3>
-
-    <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-rotate">
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-1.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-2.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-3.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-4.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-5.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-6.jpg" alt="Image" class="img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="container demo">
-    <h3 class="">Flip animation</h3>
-
-    <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-flip">
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-4.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-5.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-      <a href="#" class="direction-reveal__card">
-        <img src="images/mountain-6.jpg" alt="Image" class="direction-reveal__anim--out img-fluid">
-
-        <div class="direction-reveal__overlay direction-reveal__anim--in">
-          <h3 class="direction-reveal__title">Lorem ipsum</h3>
-          <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
-        </div>
-      </a>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="container demo">
-    <h3 class="">Bootstrap 4 grid integration</h3>
-
-    <div class="direction-reveal direction-reveal--grid-bootstrap direction-reveal--demo-bootstrap">
-
-      <div class="row">
-
-        <div class="col-sm-4">
           <a href="#" class="direction-reveal__card">
-            <img src="images/mountain-1.jpg" alt="Image" class="img-fluid">
+            <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__img">
 
             <div class="direction-reveal__overlay direction-reveal__anim--in">
               <h3 class="direction-reveal__title">Lorem ipsum</h3>
               <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
             </div>
           </a>
-        </div>
 
-        <div class="col-sm-4">
-          <a href="#" class="direction-reveal__card">
-            <img src="images/mountain-2.jpg" alt="Image" class="img-fluid">
+          <a href="#" class="direction-reveal__card" >
+            <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__img">
 
             <div class="direction-reveal__overlay direction-reveal__anim--in">
               <h3 class="direction-reveal__title">Lorem ipsum</h3>
               <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
             </div>
           </a>
-        </div>
 
-        <div class="col-sm-4">
           <a href="#" class="direction-reveal__card">
-            <img src="images/mountain-3.jpg" alt="Image" class="img-fluid">
+            <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__img">
 
             <div class="direction-reveal__overlay direction-reveal__anim--in">
               <h3 class="direction-reveal__title">Lorem ipsum</h3>
               <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
             </div>
           </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-4.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-5.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-6.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
         </div>
 
       </div>
-
     </div>
 
-  </div>
+
+    <div class="fullwidth">
+      <div class="container separator">
+        <h3 class="">Slide animation</h3>
+
+        <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-slide">
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-4.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-5.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-6.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
 
 
-  <div class="container">
+    <div class="fullwidth">
+      <div class="container separator">
+        <h3 class="">Slide &amp; Push animation</h3>
 
-    <div class="demo install">
-      <h2>Installation</h2>
+        <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-slide-push">
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-4.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-5.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-6.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="fullwidth">
+      <div class="container separator">
+        <h3 class="">Rotate animation</h3>
+
+        <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-rotate">
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-4.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-5.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-6.jpg" alt="Image" class="direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="fullwidth">
+      <div class="container separator">
+        <h3 class="">Flip animation</h3>
+
+        <div class="direction-reveal direction-reveal--3-grid-flexbox direction-reveal--demo-flip">
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-4.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-5.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+          <a href="#" class="direction-reveal__card">
+            <img src="images/mountain-6.jpg" alt="Image" class="direction-reveal__anim--out direction-reveal__img">
+
+            <div class="direction-reveal__overlay direction-reveal__anim--in">
+              <h3 class="direction-reveal__title">Lorem ipsum</h3>
+              <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="fullwidth">
+      <div class="container separator">
+        <h3 class="">Bootstrap 4 grid integration</h3>
+
+        <div class="direction-reveal direction-reveal--grid-bootstrap direction-reveal--demo-bootstrap">
+
+          <div class="row">
+
+            <div class="col-sm-4">
+              <a href="#" class="direction-reveal__card">
+                <img src="images/mountain-1.jpg" alt="Image" class="direction-reveal__img">
+
+                <div class="direction-reveal__overlay direction-reveal__anim--in">
+                  <h3 class="direction-reveal__title">Lorem ipsum</h3>
+                  <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-sm-4">
+              <a href="#" class="direction-reveal__card">
+                <img src="images/mountain-2.jpg" alt="Image" class="direction-reveal__img">
+
+                <div class="direction-reveal__overlay direction-reveal__anim--in">
+                  <h3 class="direction-reveal__title">Lorem ipsum</h3>
+                  <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-sm-4">
+              <a href="#" class="direction-reveal__card">
+                <img src="images/mountain-3.jpg" alt="Image" class="direction-reveal__img">
+
+                <div class="direction-reveal__overlay direction-reveal__anim--in">
+                  <h3 class="direction-reveal__title">Lorem ipsum</h3>
+                  <p class="direction-reveal__text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore eritatis et quasi.</p>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="fullwidth">
+      <div class="container separator">
+
+        <div class="subsection">
+          <h2>Installation</h2>
 
 <pre>
 <code>$ npm install direction-reveal --save-dev</code>
 </pre>
 
-    </div>
+        </div>
 
 
-    <div class="demo usage">
-      <h2>Usage</h2>
+        <div class="subsection">
+          <h2>Usage</h2>
 
-      <h3>Import</h3>
+          <h3>Import</h3>
 
-      <p>The script is an ES6(ES2015) module but a compiled version is included in the build as index.js. You can also copy scripts/direction-reveal.js into your own site if your build process can accommodate ES6 modules, Babel and Browserify are used in the demo site.</p>
+          <p>The script is an ES6(ES2015) module but a compiled version is included in the build as index.js. You can also copy scripts/direction-reveal.js into your own site if your build process can accommodate ES6 modules, Babel and Browserify are used in the demo site.</p>
 
 <pre><code>import DirectionReveal from 'direction-reveal';
 
@@ -441,12 +451,12 @@ const directionRevealDefault = DirectionReveal({
 </code></pre>
 
 
-      <h3>Markup</h3>
+          <h3>Markup</h3>
 
 <pre><code>&lt;div class="direction-reveal"&gt;
 
   &lt;a href="#" class="direction-reveal__card"&gt;
-    &lt;img src="images/image.jpg" alt="Image" class="img-fluid"&gt;
+    &lt;img src="images/image.jpg" alt="Image" class="direction-reveal__img"&gt;
 
     &lt;div class="direction-reveal__overlay direction-reveal__anim--in"&gt;
       &lt;h3 class="direction-reveal__title"&gt;Title&lt;/h3&gt;
@@ -460,9 +470,9 @@ const directionRevealDefault = DirectionReveal({
 </code></pre>
 
 
-      <h3>Using other tags</h3>
+          <h3>Using other tags</h3>
 
-      <p>The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; can be used as below, specifying the tabindex ensures keyboard navigation works as expected. They can all have a value of 0 and will follow the source order of the divs.</p>
+          <p>The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; can be used as below, specifying the tabindex ensures keyboard navigation works as expected. They can all have a value of 0 and will follow the source order of the divs.</p>
 
 <pre><code>&lt;div class="direction-reveal__card" tabindex="0"&gt;
   ...
@@ -470,49 +480,53 @@ const directionRevealDefault = DirectionReveal({
 </code></pre>
 
 
-<h3>Styles</h3>
+          <h3>Styles</h3>
 
-    <p>Import the styles into your project directly from the node_modules as below or copy the styles into your own project, you will need styles/direction-reveal.scss, styles/_animations.scss and styles/_variables.scss. There is also a compiled CSS file you can use, styles/direction-reveal.css.</p>
+          <p>Import the styles into your project directly from the node_modules as below or copy the styles into your own project, you will need styles/direction-reveal.scss, styles/_animations.scss and styles/_variables.scss. There is also a compiled CSS file you can use, styles/direction-reveal.css.</p>
 
 <pre><code>@import "node_modules/direction-reveal/styles/direction-reveal.scss";</code></pre>
 
+        </div>
 
-      <h3>Touch support</h3>
+        <div class="subsection">
+          <h2>Compatibility</h2>
 
-      <p>The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled with the option enableTouch.</p>
+          <h3>Touch support</h3>
 
+          <p>The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled with the option enableTouch.</p>
 
-      <h3>Browser support</h3>
+          <h3>Browser support</h3>
 
-      <p>Supports all modern browsers(Firefox, Chrome and Edge) released as of January 2018. For older browsers you may need to include polyfills for <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach" target="_blank" rel="noopener">Nodelist.forEach</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank" rel="noopener">Element.classList</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">Passive Event Listeners</a>.</p>
+          <p>Supports all modern browsers(Firefox, Chrome and Edge) released as of January 2018. For older browsers you may need to include polyfills for <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach" target="_blank" rel="noopener">Nodelist.forEach</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank" rel="noopener">Element.classList</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">Passive Event Listeners</a>.</p>
+        </div>
 
-    </div>
-
-
-    <div class="demo">
-      <h2>Demo site</h2>
-      <p>Clone or download from Github.</p>
+        <div class="subsection">
+          <h2>Demo site</h2>
+          <p>Clone or download from Github.</p>
 
 <pre><code>$ npm install
 $ gulp serve
 </code></pre>
 
+        </div>
+
+      </div>
     </div>
 
-  </div>
 
-
-  <div class="container">
-    <p>Inspired by a Codepen from <a href="https://codepen.io/noeldelgado/pen/pGwFx" target="_blank" rel="noopener">Noel Delgado</a>, this <a href="https://stackoverflow.com/a/3647634" target="_blank" rel="noopener">Stack overflow answer</a> and the article <a href="https://www.kirupa.com/html5/get_element_position_using_javascript.htm" target="_blank" rel="noopener">Get an Element's position using javascript</a>.<br><a href="https://unsplash.com" target="_blank" rel="noopener">Images from Unsplash.</a>
-    </p>
-  </div>
-
-
-  <footer class="footer">
-    <div class="container">
-      Made by Nigel O Toole <a href="http://www.purestructure.com" target="_blank" rel="noopener">pure structure</a>
+    <div class="fullwidth">
+      <div class="container seperator">
+        <p>Inspired by a Codepen by <a href="https://codepen.io/noeldelgado/pen/pGwFx" target="_blank" rel="noopener">Noel Delgado</a>, this <a href="https://stackoverflow.com/a/3647634" target="_blank" rel="noopener">Stack overflow answer</a> and the article <a href="https://www.kirupa.com/html5/get_element_position_using_javascript.htm" target="_blank" rel="noopener">Get an Element's position using javascript</a>.<br><a href="https://unsplash.com" target="_blank" rel="noopener">Images from Unsplash.</a>
+        </p>
+      </div>
     </div>
-  </footer>
+
+
+    <footer class="fullwidth fullwidth--sm footer">
+      <div class="container">
+        Made by Nigel O Toole <a href="http://www.purestructure.com" target="_blank" rel="noopener">pure structure</a>
+      </div>
+    </footer>
 
 
     <!-- build:js scripts/main.js -->

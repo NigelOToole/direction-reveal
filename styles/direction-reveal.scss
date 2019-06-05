@@ -11,6 +11,12 @@
     overflow: hidden;
   }
 
+  .direction-reveal__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
     .direction-reveal__overlay {
       position: absolute;
       top: 0;
