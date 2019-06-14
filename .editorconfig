@@ -1,25 +1,42 @@
-# EditorConfig helps developers define and maintain consistent
-# coding styles between different editors and IDEs
-# editorconfig.org
+# EditorConfig is awesome: http://EditorConfig.org
 
+# top-most EditorConfig file
 root = true
 
-
+# Unix-style newlines with a newline ending every file
 [*]
-
-# change these settings to your own preference
-indent_style = space
-indent_size = 2
-
-# we recommend you to keep these unchanged
 end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.md]
-trim_trailing_whitespace = false
+# trim_trailing_whitespace = true NIGEL TO DO - Needed???
 
-[{package,bower}.json]
 indent_style = space
 indent_size = 2
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js,html}]
+charset = utf-8
+
+# 2 space indentation
+[*.{js,html,css,scss}]
+indent_style = space
+indent_size = 2
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+# Indentation override for all JS under lib directory
+[lib/**.js]
+indent_style = space
+indent_size = 2
+
+# Matches the exact files either package.json or .travis.yml
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false

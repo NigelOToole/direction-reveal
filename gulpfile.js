@@ -1,75 +1,94 @@
-const gulp = require('gulp');
+// ----- Imports and variables ------
+const { src, dest, watch, series, parallel, lastRun } = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const $ = gulpLoadPlugins();
-const browserSync = require('browser-sync').create();
-const reload = browserSync.reload;
+const browserSync = require('browser-sync');
+const server = browserSync.create();
+const del = require('del');
+const autoprefixer = require('autoprefixer');
 
-const browserify = require('browserify');
-const babelify = require('babelify');
-const buffer = require('vinyl-buffer');
-const source = require('vinyl-source-stream');
+const paths = {
+  src: 'src',
+  dest: 'docs',
+  tmp: '.tmp'
+};
 
-gulp.task('styles', () => {
-  return gulp.src('styles/*.scss')
+
+// ----- Tasks ------
+function styles() {
+  return src(`${paths.src}/styles/*.scss`)
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
       includePaths: ['.']
-    }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    })
+    .on('error', $.sass.logError))
+    .pipe($.postcss([
+      autoprefixer()
+    ]))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('styles'))
-    .pipe(reload({stream: true}));
-});
+    .pipe(dest(`${paths.tmp}/styles`))
+    .pipe(server.reload({stream: true}));
+};
+
+exports.styles = styles;
 
 
-// Compiles scripts for browser
-gulp.task('scripts', () => {
-
-  const browserifyBundle = browserify({
-    entries: `scripts/main.js`,
-    transform: babelify,
-    debug: true
-  });
-
-  return browserifyBundle.bundle()
-    .pipe(source('bundle.js'))
-    .pipe($.plumber())
-    .pipe(buffer())
-    .pipe($.sourcemaps.init({ loadMaps: true }))
-    .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest(`scripts`))
-    .pipe(reload({ stream: true }))
-
-});
-
-
-// Compiles scripts to UMD for NPM
-gulp.task('scriptsNPM', () => {
-  return gulp.src('scripts/direction-reveal.js')
+function scripts() {
+  return src(`${paths.src}/scripts/direction-reveal.js`)
     .pipe($.plumber())
     .pipe($.babel({
-      plugins: ['transform-es2015-modules-umd']
+      plugins: ['@babel/plugin-transform-modules-umd']
     }))
-    .pipe($.rename('index.js'))
-    .pipe(gulp.dest('./'))
-});
+    .pipe($.rename('direction-reveal-umd.js'))
+    .pipe(dest(`${paths.src}/scripts/`))
+};
+
+exports.scripts = scripts;
 
 
-gulp.task('serve', ['styles', 'scripts', 'scriptsNPM'], () => {
-  browserSync.init({
+// ----- Serve tasks ------
+function startAppServer() {
+  server.init({
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['./']
+      baseDir: [`${paths.tmp}`, `${paths.src}`],
+      routes: {
+        '/node_modules': 'node_modules'
+      },
+      serveStaticOptions: {
+        extensions: ['html']
+      }
     }
   });
 
-  gulp.watch(['*.html']).on('change', reload);
-  gulp.watch('styles/**/*.scss', ['styles']);
-  gulp.watch('scripts/**/*.js', ['scripts', 'scriptsNPM']);
-});
+  watch([`${paths.src}/*.html`, `${paths.src}/**/*.js`]).on('change', server.reload);
 
-gulp.task('default', ['serve']);
+  watch(`${paths.src}/**/*.scss`, styles);
+  // watch(`${paths.src}/**/*.js`, scripts);
+}
+
+
+let serve = series(clean, parallel(styles, scripts), startAppServer);
+exports.serve = serve;
+
+
+// ----- Build tasks ------
+function compress() {
+  return src([`${paths.tmp}/*/**/*.{html,css,js}`, `${paths.src}/**/*.{html,js,jpg,gif,png}`])
+    .pipe(dest(`${paths.dest}`));
+}
+
+function clean() {
+  return del([`${paths.tmp}`, `${paths.dest}`])
+}
+
+exports.clean = clean;
+
+const build = series(clean, parallel(styles, scripts), compress);
+
+exports.build = build;
+exports.default = build;

@@ -1,13 +1,12 @@
-
 /**
   Direction aware content reveals.
 
   @param {Object} object - Container for all options.
-  @param {string} selector - Container element selector.
-  @param {string} itemSelector - Item element selector.
-  @param {string} animationName - Animation CSS class.
-  @param {boolean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
-  @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
+    @param {string} selector - Container element selector.
+    @param {string} itemSelector - Item element selector.
+    @param {string} animationName - Animation CSS class.
+    @param {boolean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
+    @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
 */
 
 
@@ -22,7 +21,22 @@ const DirectionReveal = function ({
   const containers = document.querySelectorAll(selector);
   let touchStart;
 
+	// const directionEnter = new Event('directionEnter', {bubbles: true});
+	// const directionExit = new Event('directionExit', {bubbles: true});
 
+	// const directionEnter = new CustomEvent('directionEnter');
+	// const directionExit = new CustomEvent('directionExit');
+
+
+  // Utilities - https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d
+  const addEventListenerMulti = function (element, events, fn) {
+    events.forEach((e) => element.addEventListener(e, fn));
+  };
+  
+  const switchCase = cases => defaultCase => key => key in cases ? cases[key] : defaultCase;
+
+
+  // Get direction data based on element and pointer positions
   const getDirection = function (e, item) {
     // Width and height of current item
     let w = item.offsetWidth;
@@ -33,7 +47,7 @@ const DirectionReveal = function ({
     let x = (e.pageX - position.x - (w / 2)) * (w > h ? (h / w) : 1);
     let y = (e.pageY - position.y - (h / 2)) * (h > w ? (w / h) : 1);
 
-    // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
+    // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3). - https://stackoverflow.com/a/3647634
     let d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
 
     // console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop, position.x, position.y]);
@@ -42,7 +56,7 @@ const DirectionReveal = function ({
   };
 
 
-  // https://www.kirupa.com/html5/get_element_position_using_javascript.htm
+  // Gets an elements position - https://www.kirupa.com/html5/get_element_position_using_javascript.htm
   const getPosition = function (el) {
     let xPos = 0;
     let yPos = 0;
@@ -60,7 +74,7 @@ const DirectionReveal = function ({
   }
 
 
-  const translateDirection = switchcase({
+  const translateDirection = switchCase({
     0: 'top',
     1: 'right',
     2: 'bottom',
@@ -68,6 +82,7 @@ const DirectionReveal = function ({
   })('top');
 
 
+  // Add class to element based on direction and animation name
   const addClass = function (e, state) {
     let currentItem = e.currentTarget;
     let direction = getDirection(e, currentItem);
@@ -78,6 +93,15 @@ const DirectionReveal = function ({
     let filteredCssClasses = currentCssClasses.filter((cssClass) => (!cssClass.startsWith(animationName))).join(' ');
     currentItem.className = filteredCssClasses;
     currentItem.classList.add(`${animationName}--${state}-${directionString}`);
+
+    let directionChange = new CustomEvent('directionChange', {
+      detail: {
+        state: state,
+        direction: directionString
+      }
+    });
+
+    currentItem.dispatchEvent(directionChange);
   };
 
 
@@ -115,11 +139,6 @@ const DirectionReveal = function ({
 
     });
   };
-
-  const addEventListenerMulti = function (element, events, fn) {
-    events.forEach((e) => element.addEventListener(e, fn));
-  }
-
 
   const resetVisible = function (e, items, callback) {
 
@@ -159,8 +178,3 @@ const DirectionReveal = function ({
 };
 
 export default DirectionReveal;
-
-
-// Better switch cases - https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d
-export const switchcase = cases => defaultCase => key =>
-key in cases ? cases[key] : defaultCase;

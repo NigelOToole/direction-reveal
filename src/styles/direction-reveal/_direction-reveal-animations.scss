@@ -2,10 +2,10 @@
 @mixin animation-classes($animation-name) {
 
   $directions-list: in out;
-  $positions-list:  top bottom left right;
+  $positions-list: top bottom left right;
 
   $directions-opposite-list: out in;
-  $positions-opposite-list:  bottom top right left;
+  $positions-opposite-list: bottom top right left;
 
   @each $direction in $directions-list {
     @each $position in $positions-list {
@@ -23,7 +23,7 @@
       $class-name-opposite: #{$animation-name}--#{$direction-opposite}-#{$position-opposite};
 
       .#{$class-name} {
-        .direction-reveal__anim--out {
+        .direction-reveal__anim--out{
           animation-name: #{$class-name-opposite};
         }
       }
@@ -137,6 +137,7 @@
 @include animation-classes('slide');
 
 .direction-reveal [class*='slide--'] {
+
   .direction-reveal__anim--in, .direction-reveal__anim--out {
     transform: translate3d(0, 0, 0);
     animation-timing-function: $anim-easing-easeOutQuad;
@@ -189,6 +190,70 @@
 @keyframes slide--out-right {
   100% {
     transform: translate3d(100%, 0, 0);
+  }
+}
+
+
+
+// Slide from corner
+
+@include animation-classes('roll-out');
+
+.direction-reveal [class*='roll-out--'] {
+
+  .direction-reveal__anim--in, .direction-reveal__anim--out {
+    transform: translate3d(0, 0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    animation-timing-function: $anim-easing-easeOutQuad;
+  }
+}
+
+@keyframes roll-out--in-top {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+}
+
+@keyframes roll-out--out-top {
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+}
+
+@keyframes roll-out--in-bottom {
+  0% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes roll-out--out-bottom {
+  100% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes roll-out--in-left {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+}
+
+@keyframes roll-out--out-left {
+  100% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+}
+
+
+@keyframes roll-out--in-right {
+  0% {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+}
+
+@keyframes roll-out--out-right {
+  100% {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
   }
 }
 
@@ -279,7 +344,7 @@
 
 
 
-// Flip animation
+// Flip
 
 @include animation-classes('flip');
 

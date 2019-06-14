@@ -1,18 +1,19 @@
 {
   "name": "direction-reveal",
-  "description": "Direction aware content reveals.",
-  "version": "1.3.4",
-  "main": "index.js",
-  "esnext": "scripts/direction-reveal.js",
-  "module": "scripts/direction-reveal.js",
-  "dependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "A Javascript plugin to detect which direction a user enters or exits an element, allowing you to reveal or hide content based on this direction.",
+  "version": "1.4.0",
+  "main": "src/scripts/direction-reveal-umd.js",
+  "esnext": "src/scripts/direction-reveal.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NigelOToole/direction-reveal.git"
   },
+  "bugs": {
+    "url": "https://github.com/NigelOToole/direction-reveal/issues"
+  },
+  "homepage": "https://github.com/NigelOToole/direction-reveal#readme",
+  "author": "Nigel O Toole <pure@purestructure.com> (http://www.purestructure.com)",
+  "license": "MIT",
   "keywords": [
     "javascript",
     "es6",
@@ -24,39 +25,28 @@
     "gallery",
     "grid"
   ],
-  "author": "Nigel O Toole <pure@purestructure.com> (http://www.purestructure.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NigelOToole/direction-reveal/issues"
-  },
-  "homepage": "https://github.com/NigelOToole/direction-reveal#readme",
   "engines": {
     "node": ">=4"
   },
   "devDependencies": {
-    "babel-core": "^6.4.0",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-register": "^6.5.2",
-    "babelify": "^7.3.0",
-    "browser-sync": "^2.2.1",
-    "browserify": "^14.4.0",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.1",
-    "gulp-babel": "^6.1.1",
-    "gulp-load-plugins": "^1.2.4",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/preset-env": "^7.1.0",
+    "autoprefixer": "^9.4.4",
+    "browser-sync": "^2.26.7",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-load-plugins": "^1.6.0",
     "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.0.0",
-    "gulp-sourcemaps": "^2.2.0",
-    "gulp-uglify": "^2.0.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.2.0"
   },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
-    }
+  "scripts": {
+    "start": "gulp serve",
+    "build": "gulp"
   }
 }
