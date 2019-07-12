@@ -16,7 +16,7 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.switchcase = _exports["default"] = void 0;
+  _exports["default"] = void 0;
 
   /**
     Direction aware content reveals.
@@ -36,13 +36,32 @@
         itemSelector = _ref$itemSelector === void 0 ? '.direction-reveal__card' : _ref$itemSelector,
         _ref$animationName = _ref.animationName,
         animationName = _ref$animationName === void 0 ? 'swing' : _ref$animationName,
+        _ref$animationPostfix = _ref.animationPostfixEnter,
+        animationPostfixEnter = _ref$animationPostfix === void 0 ? 'enter' : _ref$animationPostfix,
+        _ref$animationPostfix2 = _ref.animationPostfixLeave,
+        animationPostfixLeave = _ref$animationPostfix2 === void 0 ? 'leave' : _ref$animationPostfix2,
         _ref$enableTouch = _ref.enableTouch,
         enableTouch = _ref$enableTouch === void 0 ? true : _ref$enableTouch,
         _ref$touchThreshold = _ref.touchThreshold,
         touchThreshold = _ref$touchThreshold === void 0 ? 250 : _ref$touchThreshold;
 
     var containers = document.querySelectorAll(selector);
-    var touchStart;
+    var touchStart; // Utilities - https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d
+
+    var addEventListenerMulti = function addEventListenerMulti(element, events, fn) {
+      events.forEach(function (e) {
+        return element.addEventListener(e, fn);
+      });
+    };
+
+    var switchCase = function switchCase(cases) {
+      return function (defaultCase) {
+        return function (key) {
+          return key in cases ? cases[key] : defaultCase;
+        };
+      };
+    }; // Get direction data based on element and pointer positions
+
 
     var getDirection = function getDirection(e, item) {
       // Width and height of current item
@@ -51,12 +70,12 @@
       var position = getPosition(item); // Calculate the x/y value of the pointer entering/exiting, relative to the center of the item.
 
       var x = (e.pageX - position.x - w / 2) * (w > h ? h / w : 1);
-      var y = (e.pageY - position.y - h / 2) * (h > w ? w / h : 1); // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3).  See https://stackoverflow.com/a/3647634 for a full explanation.
+      var y = (e.pageY - position.y - h / 2) * (h > w ? w / h : 1); // Calculate the angle the pointer entered/exited and convert to clockwise format (top/right/bottom/left = 0/1/2/3). - https://stackoverflow.com/a/3647634
 
       var d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4; // console.table([x, y, w, h, e.pageX, e.pageY, item.offsetLeft, item.offsetTop, position.x, position.y]);
 
       return d;
-    }; // https://www.kirupa.com/html5/get_element_position_using_javascript.htm
+    }; // Gets an elements position - https://www.kirupa.com/html5/get_element_position_using_javascript.htm
 
 
     var getPosition = function getPosition(el) {
@@ -75,17 +94,17 @@
       };
     };
 
-    var translateDirection = switchcase({
+    var translateDirection = switchCase({
       0: 'top',
       1: 'right',
       2: 'bottom',
       3: 'left'
-    })('top');
+    })('top'); // Add class to element based on direction and animation name
 
     var addClass = function addClass(e, state) {
       var currentItem = e.currentTarget;
       var direction = getDirection(e, currentItem);
-      var directionString = translateDirection(direction); // Remove current animation classes and add new ones e.g. swap --in for --out.
+      var directionString = translateDirection(direction); // Remove current animation classes and add new ones e.g. swap --enter for --leave.
 
       var currentCssClasses = currentItem.className.split(' ');
       var filteredCssClasses = currentCssClasses.filter(function (cssClass) {
@@ -93,6 +112,13 @@
       }).join(' ');
       currentItem.className = filteredCssClasses;
       currentItem.classList.add("".concat(animationName, "--").concat(state, "-").concat(directionString));
+      var directionChange = new CustomEvent('directionChange', {
+        detail: {
+          state: state,
+          direction: directionString
+        }
+      });
+      currentItem.dispatchEvent(directionChange);
     };
 
     var bindEvents = function bindEvents(containerItem) {
@@ -114,18 +140,12 @@
           item.addEventListener('touchend', function (e) {
             var touchTime = +new Date() - touchStart;
 
-            if (touchTime < touchThreshold && !item.className.includes("".concat(animationName, "--in"))) {
+            if (touchTime < touchThreshold && !item.className.includes("".concat(animationName, "--").concat(animationPostfixEnter))) {
               e.preventDefault();
-              resetVisible(e, items, addClass(e, 'in'));
+              resetVisible(e, items, addClass(e, animationPostfixEnter));
             }
           });
         }
-      });
-    };
-
-    var addEventListenerMulti = function addEventListenerMulti(element, events, fn) {
-      events.forEach(function (e) {
-        return element.addEventListener(e, fn);
       });
     };
 
@@ -133,8 +153,8 @@
       items.forEach(function (item) {
         var currentCssClasses = item.className;
 
-        if (currentCssClasses.includes("".concat(animationName, "--in")) && item !== e.currentTarget) {
-          item.className = currentCssClasses.replace("".concat(animationName, "--in"), "".concat(animationName, "--out"));
+        if (currentCssClasses.includes("".concat(animationName, "--").concat(animationPostfixEnter)) && item !== e.currentTarget) {
+          item.className = currentCssClasses.replace("".concat(animationName, "--").concat(animationPostfixEnter), "".concat(animationName, "--").concat(animationPostfixLeave));
         }
       });
       callback;
@@ -158,17 +178,6 @@
     };
   };
 
-  var _default = DirectionReveal; // Better switch cases - https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d
-
+  var _default = DirectionReveal;
   _exports["default"] = _default;
-
-  var switchcase = function switchcase(cases) {
-    return function (defaultCase) {
-      return function (key) {
-        return key in cases ? cases[key] : defaultCase;
-      };
-    };
-  };
-
-  _exports.switchcase = switchcase;
 });

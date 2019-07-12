@@ -1,10 +1,10 @@
 // Generates classes to assign animations
 @mixin animation-classes($animation-name) {
 
-  $directions-list: in out;
+  $directions-list: $anim-postfix-enter $anim-postfix-leave;
   $positions-list: top bottom left right;
 
-  $directions-opposite-list: out in;
+  $directions-opposite-list: $anim-postfix-leave $anim-postfix-enter;
   $positions-opposite-list: bottom top right left;
 
   @each $direction in $directions-list {
@@ -13,7 +13,7 @@
       $class-name: #{$animation-name}--#{$direction}-#{$position};
 
       .#{$class-name} {
-        .direction-reveal__anim--in {
+        .direction-reveal__anim--#{$anim-postfix-enter} {
           animation-name: #{$class-name};
         }
       }
@@ -23,7 +23,7 @@
       $class-name-opposite: #{$animation-name}--#{$direction-opposite}-#{$position-opposite};
 
       .#{$class-name} {
-        .direction-reveal__anim--out{
+        .direction-reveal__anim--#{$anim-postfix-leave} {
           animation-name: #{$class-name-opposite};
         }
       }
@@ -43,88 +43,88 @@
 .direction-reveal [class*='swing--'] {
   perspective: 400px;
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform: rotate3d(0, 0, 0, 0);
     animation-timing-function: $anim-easing-easeOutCubic;
   }
 }
 
-.swing--in-top, .swing--out-top {
+.swing--#{$anim-postfix-enter}-top, .swing--#{$anim-postfix-leave}-top {
   perspective-origin: center top;
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: center top;
   }
 }
 
-.swing--in-bottom, .swing--out-bottom {
+.swing--#{$anim-postfix-enter}-bottom, .swing--#{$anim-postfix-leave}-bottom {
   perspective-origin: center bottom;
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: center bottom;
   }
 }
 
-.swing--in-left, .swing--out-left {
+.swing--#{$anim-postfix-enter}-left, .swing--#{$anim-postfix-leave}-left {
   perspective-origin: left center;
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: left center;
   }
 }
 
-.swing--in-right, .swing--out-right {
+.swing--#{$anim-postfix-enter}-right, .swing--#{$anim-postfix-leave}-right {
   perspective-origin: right center;
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: right center;
   }
 }
 
 
-@keyframes swing--in-top {
+@keyframes swing--#{$anim-postfix-enter}-top {
   0% {
     transform: rotate3d(-1, 0, 0, 90deg);
   }
 }
 
-@keyframes swing--out-top {
+@keyframes swing--#{$anim-postfix-leave}-top {
   100% {
     transform: rotate3d(-1, 0, 0, 90deg);
   }
 }
 
-@keyframes swing--in-bottom {
+@keyframes swing--#{$anim-postfix-enter}-bottom {
   0% {
     transform: rotate3d(1, 0, 0, 90deg);
   }
 }
 
-@keyframes swing--out-bottom {
+@keyframes swing--#{$anim-postfix-leave}-bottom {
   100% {
     transform: rotate3d(1, 0, 0, 90deg);
   }
 }
 
-@keyframes swing--in-left {
+@keyframes swing--#{$anim-postfix-enter}-left {
   0% {
     transform: rotate3d(0, 1, 0, 90deg);
   }
 }
 
-@keyframes swing--out-left {
+@keyframes swing--#{$anim-postfix-leave}-left {
   100% {
     transform: rotate3d(0, 1, 0, 90deg);
   }
 }
 
-@keyframes swing--in-right {
+@keyframes swing--#{$anim-postfix-enter}-right {
   0% {
     transform: rotate3d(0, -1, 0, 90deg);
   }
 }
 
-@keyframes swing--out-right {
+@keyframes swing--#{$anim-postfix-leave}-right {
   100% {
     transform: rotate3d(0, -1, 0, 90deg);
   }
@@ -138,56 +138,56 @@
 
 .direction-reveal [class*='slide--'] {
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform: translate3d(0, 0, 0);
     animation-timing-function: $anim-easing-easeOutQuad;
   }
 }
 
-@keyframes slide--in-top {
+@keyframes slide--#{$anim-postfix-enter}-top {
   0% {
     transform: translate3d(0, -100%, 0);
   }
 }
 
-@keyframes slide--out-top {
+@keyframes slide--#{$anim-postfix-leave}-top {
   100% {
     transform: translate3d(0, -100%, 0);
   }
 }
 
-@keyframes slide--in-bottom {
+@keyframes slide--#{$anim-postfix-enter}-bottom {
   0% {
     transform: translate3d(0, 100%, 0);
   }
 }
 
-@keyframes slide--out-bottom {
+@keyframes slide--#{$anim-postfix-leave}-bottom {
   100% {
     transform: translate3d(0, 100%, 0);
   }
 }
 
-@keyframes slide--in-left {
+@keyframes slide--#{$anim-postfix-enter}-left {
   0% {
     transform: translate3d(-100%, 0, 0);
   }
 }
 
-@keyframes slide--out-left {
+@keyframes slide--#{$anim-postfix-leave}-left {
   100% {
     transform: translate3d(-100%, 0, 0);
   }
 }
 
 
-@keyframes slide--in-right {
+@keyframes slide--#{$anim-postfix-enter}-right {
   0% {
     transform: translate3d(100%, 0, 0);
   }
 }
 
-@keyframes slide--out-right {
+@keyframes slide--#{$anim-postfix-leave}-right {
   100% {
     transform: translate3d(100%, 0, 0);
   }
@@ -201,57 +201,57 @@
 
 .direction-reveal [class*='roll-out--'] {
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform: translate3d(0, 0, 0);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     animation-timing-function: $anim-easing-easeOutQuad;
   }
 }
 
-@keyframes roll-out--in-top {
+@keyframes roll-out--#{$anim-postfix-enter}-top {
   0% {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 }
 
-@keyframes roll-out--out-top {
+@keyframes roll-out--#{$anim-postfix-leave}-top {
   100% {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 }
 
-@keyframes roll-out--in-bottom {
+@keyframes roll-out--#{$anim-postfix-enter}-bottom {
   0% {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
   }
 }
 
-@keyframes roll-out--out-bottom {
+@keyframes roll-out--#{$anim-postfix-leave}-bottom {
   100% {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
   }
 }
 
-@keyframes roll-out--in-left {
+@keyframes roll-out--#{$anim-postfix-enter}-left {
   0% {
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   }
 }
 
-@keyframes roll-out--out-left {
+@keyframes roll-out--#{$anim-postfix-leave}-left {
   100% {
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   }
 }
 
 
-@keyframes roll-out--in-right {
+@keyframes roll-out--#{$anim-postfix-enter}-right {
   0% {
     clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
   }
 }
 
-@keyframes roll-out--out-right {
+@keyframes roll-out--#{$anim-postfix-leave}-right {
   100% {
     clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
   }
@@ -264,79 +264,79 @@
 @include animation-classes('rotate');
 
 .direction-reveal [class*='rotate--'] {
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform: rotate(0);
     animation-timing-function: $anim-easing-easeOutQuad;
   }
 }
 
-.rotate--in-top, .rotate--out-top {
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+.rotate--#{$anim-postfix-enter}-top, .rotate--#{$anim-postfix-leave}-top {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: left top;
   }
 }
 
-.rotate--in-bottom, .rotate--out-bottom {
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+.rotate--#{$anim-postfix-enter}-bottom, .rotate--#{$anim-postfix-leave}-bottom {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: left bottom;
   }
 }
 
-.rotate--in-left, .rotate--out-left {
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+.rotate--#{$anim-postfix-enter}-left, .rotate--#{$anim-postfix-leave}-left {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: left top;
   }
 }
 
-.rotate--in-right, .rotate--out-right {
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+.rotate--#{$anim-postfix-enter}-right, .rotate--#{$anim-postfix-leave}-right {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform-origin: right top;
   }
 }
 
-@keyframes rotate--in-top {
+@keyframes rotate--#{$anim-postfix-enter}-top {
   0% {
     transform: rotate(-90deg);
   }
 }
 
-@keyframes rotate--out-top {
+@keyframes rotate--#{$anim-postfix-leave}-top {
   100% {
     transform: rotate(-90deg);
   }
 }
 
-@keyframes rotate--in-bottom {
+@keyframes rotate--#{$anim-postfix-enter}-bottom {
   0% {
     transform: rotate(90deg);
   }
 }
 
-@keyframes rotate--out-bottom {
+@keyframes rotate--#{$anim-postfix-leave}-bottom {
   100% {
     transform: rotate(90deg);
   }
 }
 
-@keyframes rotate--in-left {
+@keyframes rotate--#{$anim-postfix-enter}-left {
   0% {
     transform: rotate(90deg);
   }
 }
 
-@keyframes rotate--out-left {
+@keyframes rotate--#{$anim-postfix-leave}-left {
   100% {
     transform: rotate(90deg);
   }
 }
 
-@keyframes rotate--in-right {
+@keyframes rotate--#{$anim-postfix-enter}-right {
   0% {
     transform: rotate(-90deg);
   }
 }
 
-@keyframes rotate--out-right {
+@keyframes rotate--#{$anim-postfix-leave}-right {
   100% {
     transform: rotate(-90deg);
   }
@@ -352,7 +352,7 @@
   perspective: 800px;
   overflow: visible;
 
-  .direction-reveal__anim--in, .direction-reveal__anim--out {
+  .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
     transform: rotateX(0) rotateY(0); // Order must be the same as the animations
     animation-timing-function: $anim-easing-easeInOutQuad;
     animation-duration: $anim-duration*2;
@@ -361,49 +361,49 @@
   }
 }
 
-@keyframes flip--in-top {
+@keyframes flip--#{$anim-postfix-enter}-top {
   0% {
     transform: rotateX(180deg) rotateY(0);
   }
 }
 
-@keyframes flip--out-top {
+@keyframes flip--#{$anim-postfix-leave}-top {
   100% {
     transform: rotateX(180deg) rotateY(0);
   }
 }
 
-@keyframes flip--in-bottom {
+@keyframes flip--#{$anim-postfix-enter}-bottom {
   0% {
     transform: rotateX(-180deg) rotateY(0);
   }
 }
 
-@keyframes flip--out-bottom {
+@keyframes flip--#{$anim-postfix-leave}-bottom {
   100% {
     transform: rotateX(-180deg) rotateY(0);
   }
 }
 
-@keyframes flip--in-left {
+@keyframes flip--#{$anim-postfix-enter}-left {
   0% {
     transform: rotateX(0) rotateY(-180deg);
   }
 }
 
-@keyframes flip--out-left {
+@keyframes flip--#{$anim-postfix-leave}-left {
   100% {
     transform: rotateX(0) rotateY(-180deg);
   }
 }
 
-@keyframes flip--in-right {
+@keyframes flip--#{$anim-postfix-enter}-right {
   0% {
     transform: rotateX(0) rotateY(180deg);
   }
 }
 
-@keyframes flip--out-right {
+@keyframes flip--#{$anim-postfix-leave}-right {
   100% {
     transform: rotateX(0) rotateY(180deg);
   }

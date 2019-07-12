@@ -40,5 +40,5 @@ const directionRevealFlip = DirectionReveal({
 });
 
   document.querySelector('#test').addEventListener('directionChange', (event) => { 
-    console.log(event.detail.state + ' ' + event.detail.direction);
+    console.log(`State: ${event.detail.state} Direction: ${event.detail.direction}`);
   });

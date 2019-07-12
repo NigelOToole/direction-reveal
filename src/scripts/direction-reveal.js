@@ -14,18 +14,14 @@ const DirectionReveal = function ({
   selector: selector = '.direction-reveal',
   itemSelector: itemSelector = '.direction-reveal__card',
   animationName: animationName = 'swing',
+  animationPostfixEnter: animationPostfixEnter = 'enter',
+  animationPostfixLeave: animationPostfixLeave = 'leave',
   enableTouch: enableTouch = true,
   touchThreshold: touchThreshold = 250
   } = {}) {
 
   const containers = document.querySelectorAll(selector);
   let touchStart;
-
-	// const directionEnter = new Event('directionEnter', {bubbles: true});
-	// const directionExit = new Event('directionExit', {bubbles: true});
-
-	// const directionEnter = new CustomEvent('directionEnter');
-	// const directionExit = new CustomEvent('directionExit');
 
 
   // Utilities - https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d
@@ -88,7 +84,7 @@ const DirectionReveal = function ({
     let direction = getDirection(e, currentItem);
     let directionString = translateDirection(direction);
 
-    // Remove current animation classes and add new ones e.g. swap --in for --out.
+    // Remove current animation classes and add new ones e.g. swap --enter for --leave.
     let currentCssClasses = currentItem.className.split(' ');
     let filteredCssClasses = currentCssClasses.filter((cssClass) => (!cssClass.startsWith(animationName))).join(' ');
     currentItem.className = filteredCssClasses;
@@ -111,11 +107,11 @@ const DirectionReveal = function ({
     items.forEach((item) => {
 
       addEventListenerMulti(item, ['mouseenter', 'focus'], (e) => {
-        addClass(e, 'in');
+        addClass(e, animationPostfixEnter);
       });
 
       addEventListenerMulti(item, ['mouseleave', 'blur'], (e) => {
-        addClass(e, 'out');
+        addClass(e, animationPostfixLeave);
       });
 
 
@@ -128,10 +124,10 @@ const DirectionReveal = function ({
         item.addEventListener('touchend', (e) => {
           let touchTime = +new Date - touchStart;
 
-          if (touchTime < touchThreshold && !item.className.includes(`${animationName}--in`)) {
+          if (touchTime < touchThreshold && !item.className.includes(`${animationName}--${animationPostfixEnter}`)) {
             e.preventDefault();
 
-            resetVisible(e, items, addClass(e, 'in'));
+            resetVisible(e, items, addClass(e, animationPostfixEnter));
           }
         });
 
@@ -145,8 +141,8 @@ const DirectionReveal = function ({
     items.forEach((item) => {
       let currentCssClasses = item.className;
 
-      if(currentCssClasses.includes(`${animationName}--in`) && item !== e.currentTarget) {
-        item.className = currentCssClasses.replace(`${animationName}--in`, `${animationName}--out`);
+      if(currentCssClasses.includes(`${animationName}--${animationPostfixEnter}`) && item !== e.currentTarget) {
+        item.className = currentCssClasses.replace(`${animationName}--${animationPostfixEnter}`, `${animationName}--${animationPostfixLeave}`);
       }
     });
 

@@ -25,15 +25,15 @@
       background-color: $overlay-background;
     }
 
-    // .direction-reveal__anim--in is used to animate in hidden content, the default animation used on the overlay
-    // .direction-reveal__anim--out is used to animate out visible content
-    .direction-reveal__anim--in, .direction-reveal__anim--out {
+    // .direction-reveal__anim--enter is used to animate in hidden content, the default animation used on the overlay
+    // .direction-reveal__anim--leave is used to animate out visible content
+    .direction-reveal__anim--#{$anim-postfix-enter}, .direction-reveal__anim--#{$anim-postfix-leave} {
       animation-duration: $anim-duration;
       animation-timing-function: $anim-easing-easeOutQuad;
       animation-fill-mode: forwards;
     }
 
-    .direction-reveal__anim--in {
+    .direction-reveal__anim--#{$anim-postfix-enter} {
       transform: translate3d(0, -100%, 0); // Initial position before any animation i.e. hidden by default
     }
 
