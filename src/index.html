@@ -588,6 +588,8 @@ const directionRevealDefault = DirectionReveal({
   selector: '.direction-reveal',
   itemSelector: '.direction-reveal__card',
   animationName: 'swing',
+  animationPostfixEnter: 'enter',
+  animationPostfixLeave: 'leave',
   enableTouch: true,
   touchThreshold: 250
 });
@@ -620,6 +622,18 @@ const directionRevealDefault = DirectionReveal({
             <td>'swing'</td>
             <td>String</td>
             <td>Animation class.</td>
+          </tr>
+          <tr>
+            <td><code>animationPostfixEnter</code></td>
+            <td>'enter'</td>
+            <td>String</td>
+            <td>Animation CSS class postfix for enter event.</td>
+          </tr>
+          <tr>
+            <td><code>animationPostfixLeave</code></td>
+            <td>'leave'</td>
+            <td>String</td>
+            <td>Animation CSS class postfix for leave event.</td>
           </tr>
           <tr>
             <td><code>enableTouch</code></td>
@@ -712,14 +726,11 @@ $ gulp serve
 
         </div>
 
-      </div>
-    </div>
+        <div class="subsection">
+          <h3>Credits</h3>
+          <p class="m-0">Inspired by a Codepen by <a href="https://codepen.io/noeldelgado/pen/pGwFx" target="_blank" rel="noopener">Noel Delgado</a>, this <a href="https://stackoverflow.com/a/3647634" target="_blank" rel="noopener">Stack overflow answer</a>, the article <a href="https://www.kirupa.com/html5/get_element_position_using_javascript.htm" target="_blank" rel="noopener">Get an Element's position using javascript</a> and <br><a href="https://unsplash.com" target="_blank" rel="noopener">images from Unsplash.</a></p>
+        </div>
 
-
-    <div class="fullwidth">
-      <div class="container separator">
-        <p class="m-0">Inspired by a Codepen by <a href="https://codepen.io/noeldelgado/pen/pGwFx" target="_blank" rel="noopener">Noel Delgado</a>, this <a href="https://stackoverflow.com/a/3647634" target="_blank" rel="noopener">Stack overflow answer</a> and the article <a href="https://www.kirupa.com/html5/get_element_position_using_javascript.htm" target="_blank" rel="noopener">Get an Element's position using javascript</a>.<br><a href="https://unsplash.com" target="_blank" rel="noopener">Images from Unsplash.</a>
-        </p>
       </div>
     </div>
 

@@ -36,8 +36,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1, h2, h3 {
+h1, h2 {
   margin: 0 0 1.5rem 0;
+}
+
+h3 {
+  margin: 0 0 1rem 0;
 }
 
 h4, h5, h6 {
@@ -68,7 +72,7 @@ pre, code {
 pre {
   display: block;
   padding: .75rem 1rem;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 2rem 0;
   overflow: auto;
   font-size: 1rem;
   word-break: break-all;
@@ -130,7 +134,7 @@ pre {
   }
 
     .subsection {
-      margin: 0 0 2rem 0;
+      margin: 0 0 2.5rem 0;
     }
 
 

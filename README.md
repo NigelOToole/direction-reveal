@@ -3,8 +3,7 @@
 [Live demo](http://nigelotoole.github.io/direction-reveal/)
 
 ## Direction aware content reveals
-This plugin detects which direction a user enters/exits a block, allowing you to reveal/hide content based on this direction.
-The hidden content can animate in from the direction the user enters and animate out the direction the user leaves, allowing you to create interesting animation effects.
+This plugin detects which direction a user enters or leaves an element, allowing you to reveal or hide content based on this direction.
 
 
 
@@ -16,9 +15,9 @@ $ npm install direction-reveal --save-dev
 
 ## Usage
 
-### Import
+### Import JS
 
-The script is an ES6(ES2015) module but a compiled version is included in the build as index.js. You can also copy scripts/direction-reveal.js into your own site if your build process can accommodate ES6 modules, Babel and Browserify are used in the demo site.
+The script is an ES6(ES2015) module but the compiled version is included in the build as "src/scripts/direction-reveal-umd.js". You can also copy "src/scripts/direction-reveal.js" into your own site if your build process can accommodate ES6 modules.
 
 ```javascript
 import DirectionReveal from 'direction-reveal';
@@ -27,13 +26,33 @@ import DirectionReveal from 'direction-reveal';
 const directionRevealDemo = DirectionReveal();
 
 // Init with all options at default setting
-const directionRevealSwing = DirectionReveal({
-  selector: '.direction-reveal',              // Container element selector.
-  itemSelector: '.direction-reveal__card',    // Item element selector.
-  animationName: 'swing',                     // Animation CSS class.
-  enableTouch: true,                          // Adds touch event to show content on first click then follow link on the second click.
-  touchThreshold: 250                         // Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
+const directionRevealDefault = DirectionReveal({
+  selector: '.direction-reveal',
+  itemSelector: '.direction-reveal__card',
+  animationName: 'swing',
+  animationPostfixEnter: 'enter',
+  animationPostfixLeave: 'leave',
+  enableTouch: true,
+  touchThreshold: 250
 });
+```
+
+### Options
+| Property                | Default                     | Type       | Description                                                                                       |
+| ----------------------- | --------------------------- | ---------- | ------------------------------------------------------------------------------------------------- |
+| `selector`              | '.direction-reveal'         | String     | Container element selector.                                                                       |
+| `itemSelector`          | '.direction-reveal\_\_card' | String     | Item element selector.                                                                            |
+| `animationName`         | 'swing'                     | String     | Animation class.                                                                                  |
+| `animationPostfixEnter` | 'enter'                     | String     | Animation CSS class postfix for enter event.                                                      |
+| `animationPostfixLeave` | 'leave'                     | String     | Animation CSS class postfix for leave event.                                                      |
+| `enableTouch`           | true                        | Boolean    | Adds touch event to show content on first click then follow link on the second click.             |
+| `touchThreshold`        | 250                         | Number(ms) | The touch length in ms to trigger the reveal, this is to prevent triggering if user is scrolling. |
+
+
+### Import SASS
+
+```scss
+@import "node_modules/direction-reveal/src/styles/direction-reveal.scss";
 ```
 
 
@@ -45,7 +64,7 @@ const directionRevealSwing = DirectionReveal({
   <a href="#" class="direction-reveal__card">
     <img src="images/image.jpg" alt="Image" class="img-fluid">
 
-    <div class="direction-reveal__overlay direction-reveal__anim--in">
+    <div class="direction-reveal__overlay direction-reveal__anim--enter">
       <h3 class="direction-reveal__title">Title</h3>
       <p class="direction-reveal__text">Description text.</p>
     </div>
@@ -65,20 +84,31 @@ The demos use &lt;a&gt; tags for the "direction-reveal__card" but a &lt;div&gt; 
 </div>
 ```
 
-### Styles
+### Inverted animations
 
-Import the styles into your project directly from the node_modules as below or copy the styles into your own project, you will need styles/direction-reveal.scss, styles/_animations.scss and styles/_variables.scss. There is also a compiled CSS file you can use, styles/direction-reveal.css.
+Most of the animations above can be inverted so the overlay is visible by default and animates out on hover. Change the class 'direction-reveal__anim--enter' to 'direction-reveal__anim--leave' for this effect.
 
-```html
-@import "node_modules/direction-reveal/styles/direction-reveal.scss";
+You can also add the class 'direction-reveal__anim--enter' or 'direction-reveal__anim--leave' to the image to animate it at the same time as overlay. This effect can be seen in the Slide & Push demo.
+
+## Events
+
+A 'directionChange' event is broadcast once a user enters/leaves an item with information about the action(enter,leave) and direction(top, right, bottom, left).
+
+```javascript
+document.querySelector('#test').addEventListener('directionChange', (event) => { 
+  console.log(`Action: ${event.detail.action} Direction: ${event.detail.direction}`);
+});
 ```
+
+## Compatibility
 
 ### Touch support
 The plugin will detect touch support and reveal the hidden content on first click then follow link on the second click. This can be disabled with the option enableTouch.
 
 
 ### Browser support
-Supports all modern browsers(Firefox, Chrome and Edge) released as of January 2018. For older browsers you may need to include polyfills for Nodelist.forEach and Element.classList.
+Supports all modern browsers(Firefox, Chrome and Edge) released as of January 2018. For older browsers you may need to include polyfills for [Nodelist.forEach](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach), [Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) and [Passive Event Listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
+
 
 
 ## Demo site
@@ -88,6 +118,10 @@ Clone or download from Github.
 $ npm install
 $ gulp serve
 ```
+
+### Credits
+
+Inspired by a Codepen by [Noel Delgado](https://codepen.io/noeldelgado/pen/pGwFx), this [Stack overflow answer](https://stackoverflow.com/a/3647634), the article [Get an Element's position using javascript](https://www.kirupa.com/html5/get_element_position_using_javascript.htm) and [Images from Unsplash.](https://unsplash.com).
 
 
 ### License

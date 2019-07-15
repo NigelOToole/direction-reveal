@@ -62,6 +62,14 @@
           return key in cases ? cases[key] : defaultCase;
         };
       };
+    };
+
+    var fireEvent = function fireEvent(item, eventName, eventDetail) {
+      var event = new CustomEvent(eventName, {
+        bubbles: true,
+        detail: eventDetail
+      });
+      item.dispatchEvent(event);
     }; // Get direction data based on element and pointer positions
 
 
@@ -101,12 +109,12 @@
       1: 'right',
       2: 'bottom',
       3: 'left'
-    })('top'); // Add class to element based on direction and animation name
+    })('top'); // Updates direction and toggles classes
 
-    var addClass = function addClass(e, action) {
+    var updateDirection = function updateDirection(e, action) {
       var currentItem = e.currentTarget;
       var direction = getDirection(e, currentItem);
-      var directionString = translateDirection(direction); // Remove current animation classes and add new ones e.g. swap --enter for --leave.
+      var directionString = translateDirection(direction); // Remove current animation classes and adds current action/direction.
 
       var currentCssClasses = currentItem.className.split(' ');
       var filteredCssClasses = currentCssClasses.filter(function (cssClass) {
@@ -114,23 +122,21 @@
       }).join(' ');
       currentItem.className = filteredCssClasses;
       currentItem.classList.add("".concat(animationName, "--").concat(action, "-").concat(directionString));
-      var directionChange = new CustomEvent('directionChange', {
-        detail: {
-          action: action,
-          direction: directionString
-        }
-      });
-      currentItem.dispatchEvent(directionChange);
+      var eventDetail = {
+        action: action,
+        direction: directionString
+      };
+      fireEvent(currentItem, 'directionChange', eventDetail);
     };
 
     var bindEvents = function bindEvents(containerItem) {
       var items = containerItem.querySelectorAll(itemSelector);
       items.forEach(function (item) {
         addEventListenerMulti(item, ['mouseenter', 'focus'], function (e) {
-          addClass(e, animationPostfixEnter);
+          updateDirection(e, animationPostfixEnter);
         });
         addEventListenerMulti(item, ['mouseleave', 'blur'], function (e) {
-          addClass(e, animationPostfixLeave);
+          updateDirection(e, animationPostfixLeave);
         });
 
         if (enableTouch) {
@@ -144,7 +150,7 @@
 
             if (touchTime < touchThreshold && !item.className.includes("".concat(animationName, "--").concat(animationPostfixEnter))) {
               e.preventDefault();
-              resetVisible(e, items, addClass(e, animationPostfixEnter));
+              resetVisible(e, items, updateDirection(e, animationPostfixEnter));
             }
           });
         }

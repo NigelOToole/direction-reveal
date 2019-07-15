@@ -68,7 +68,6 @@ function startAppServer() {
   watch([`${paths.src}/*.html`, `${paths.src}/**/*.js`]).on('change', server.reload);
 
   watch(`${paths.src}/**/*.scss`, styles);
-  // watch(`${paths.src}/**/*.js`, scripts);
 }
 
 
