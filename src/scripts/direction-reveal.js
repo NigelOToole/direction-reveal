@@ -5,6 +5,8 @@
     @param {string} selector - Container element selector.
     @param {string} itemSelector - Item element selector.
     @param {string} animationName - Animation CSS class.
+    @param {string} animationPostfixEnter - Animation CSS class postfix for enter event.
+    @param {string} animationPostfixLeave - Animation CSS class postfix for leave event.
     @param {boolean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
     @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
 */
@@ -30,6 +32,15 @@ const DirectionReveal = function ({
   };
   
   const switchCase = cases => defaultCase => key => key in cases ? cases[key] : defaultCase;
+
+  const fireEvent = (item, eventName, eventDetail) => {
+    const event = new CustomEvent(eventName, {
+      bubbles: true,
+      detail: eventDetail,
+    });
+
+    item.dispatchEvent(event);
+  };
 
 
   // Get direction data based on element and pointer positions
@@ -67,7 +78,7 @@ const DirectionReveal = function ({
       x: xPos,
       y: yPos
     };
-  }
+  };
 
 
   const translateDirection = switchCase({
@@ -78,26 +89,20 @@ const DirectionReveal = function ({
   })('top');
 
 
-  // Add class to element based on direction and animation name
-  const addClass = function (e, state) {
+  // Updates direction and toggles classes
+  const updateDirection = function (e, action) {
     let currentItem = e.currentTarget;
     let direction = getDirection(e, currentItem);
     let directionString = translateDirection(direction);
 
-    // Remove current animation classes and add new ones e.g. swap --enter for --leave.
+    // Remove current animation classes and adds current action/direction.
     let currentCssClasses = currentItem.className.split(' ');
     let filteredCssClasses = currentCssClasses.filter((cssClass) => (!cssClass.startsWith(animationName))).join(' ');
     currentItem.className = filteredCssClasses;
-    currentItem.classList.add(`${animationName}--${state}-${directionString}`);
+    currentItem.classList.add(`${animationName}--${action}-${directionString}`);
 
-    let directionChange = new CustomEvent('directionChange', {
-      detail: {
-        state: state,
-        direction: directionString
-      }
-    });
-
-    currentItem.dispatchEvent(directionChange);
+    let eventDetail = { action: action, direction: directionString };
+    fireEvent(currentItem, 'directionChange', eventDetail);
   };
 
 
@@ -107,11 +112,11 @@ const DirectionReveal = function ({
     items.forEach((item) => {
 
       addEventListenerMulti(item, ['mouseenter', 'focus'], (e) => {
-        addClass(e, animationPostfixEnter);
+        updateDirection(e, animationPostfixEnter);
       });
 
       addEventListenerMulti(item, ['mouseleave', 'blur'], (e) => {
-        addClass(e, animationPostfixLeave);
+        updateDirection(e, animationPostfixLeave);
       });
 
 
@@ -127,7 +132,7 @@ const DirectionReveal = function ({
           if (touchTime < touchThreshold && !item.className.includes(`${animationName}--${animationPostfixEnter}`)) {
             e.preventDefault();
 
-            resetVisible(e, items, addClass(e, animationPostfixEnter));
+            resetVisible(e, items, updateDirection(e, animationPostfixEnter));
           }
         });
 
@@ -135,6 +140,7 @@ const DirectionReveal = function ({
 
     });
   };
+
 
   const resetVisible = function (e, items, callback) {
 
@@ -163,7 +169,8 @@ const DirectionReveal = function ({
 
   };
 
-  // Init is called by default
+
+  // Self init
   init();
 
 

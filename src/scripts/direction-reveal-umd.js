@@ -25,6 +25,8 @@
       @param {string} selector - Container element selector.
       @param {string} itemSelector - Item element selector.
       @param {string} animationName - Animation CSS class.
+      @param {string} animationPostfixEnter - Animation CSS class postfix for enter event.
+      @param {string} animationPostfixLeave - Animation CSS class postfix for leave event.
       @param {boolean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
       @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
   */
@@ -101,7 +103,7 @@
       3: 'left'
     })('top'); // Add class to element based on direction and animation name
 
-    var addClass = function addClass(e, state) {
+    var addClass = function addClass(e, action) {
       var currentItem = e.currentTarget;
       var direction = getDirection(e, currentItem);
       var directionString = translateDirection(direction); // Remove current animation classes and add new ones e.g. swap --enter for --leave.
@@ -111,10 +113,10 @@
         return !cssClass.startsWith(animationName);
       }).join(' ');
       currentItem.className = filteredCssClasses;
-      currentItem.classList.add("".concat(animationName, "--").concat(state, "-").concat(directionString));
+      currentItem.classList.add("".concat(animationName, "--").concat(action, "-").concat(directionString));
       var directionChange = new CustomEvent('directionChange', {
         detail: {
-          state: state,
+          action: action,
           direction: directionString
         }
       });
@@ -125,10 +127,10 @@
       var items = containerItem.querySelectorAll(itemSelector);
       items.forEach(function (item) {
         addEventListenerMulti(item, ['mouseenter', 'focus'], function (e) {
-          addClass(e, 'in');
+          addClass(e, animationPostfixEnter);
         });
         addEventListenerMulti(item, ['mouseleave', 'blur'], function (e) {
-          addClass(e, 'out');
+          addClass(e, animationPostfixLeave);
         });
 
         if (enableTouch) {
@@ -168,7 +170,7 @@
       } else {
         return;
       }
-    }; // Init is called by default
+    }; // Self init
 
 
     init(); // Reveal API

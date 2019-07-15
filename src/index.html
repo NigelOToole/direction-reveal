@@ -680,6 +680,17 @@ const directionRevealDefault = DirectionReveal({
         </div>
 
         <div class="subsection">
+          <h2>Events</h2>
+
+          <p>A 'directionChange' event is broadcast once a user enters/leaves an item with information about the action(enter,leave) and direction(top, right, bottom, left).</p>
+
+<pre><code>document.querySelector('#test').addEventListener('directionChange', (event) => { 
+  console.log(`Action: ${event.detail.action} Direction: ${event.detail.direction}`);
+});
+</code></pre>
+        </div>
+
+        <div class="subsection">
           <h2>Compatibility</h2>
 
           <h3>Touch support</h3>
