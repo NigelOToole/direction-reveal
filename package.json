@@ -1,7 +1,7 @@
 {
   "name": "direction-reveal",
-  "description": "A Javascript plugin to detect which direction a user enters or leaves an element, allowing you to reveal or hide content based on this direction.",
-  "version": "2.0.0",
+  "description": "A plugin that detects the direction a user enters or leaves an element allowing you to reveal or hide content based on this direction.",
+  "version": "2.0.1",
   "main": "src/scripts/direction-reveal-umd.js",
   "esnext": "src/scripts/direction-reveal.js",
   "repository": {

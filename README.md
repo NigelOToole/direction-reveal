@@ -1,9 +1,7 @@
 # Direction Reveal
+### A plugin that detects the direction a user enters or leaves an element allowing you to reveal or hide content based on this direction.
 
-[Live demo](http://nigelotoole.github.io/direction-reveal/)
-
-## Direction aware content reveals
-This plugin detects which direction a user enters or leaves an element, allowing you to reveal or hide content based on this direction.
+### [View demo](http://nigelotoole.github.io/direction-reveal/)
 
 
 
