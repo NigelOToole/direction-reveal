@@ -18,7 +18,7 @@ const paths = {
 function styles() {
   return src(`${paths.src}/styles/*.scss`)
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
+    // .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
@@ -28,8 +28,9 @@ function styles() {
     .pipe($.postcss([
       autoprefixer()
     ]))
-    .pipe($.sourcemaps.write())
-    .pipe(dest(`${paths.tmp}/styles`))
+    // .pipe($.sourcemaps.write())
+    // .pipe(dest(`${paths.tmp}/styles`))
+    .pipe(dest(`${paths.src}/styles`))
     .pipe(server.reload({stream: true}));
 };
 
@@ -52,10 +53,12 @@ exports.scripts = scripts;
 // ----- Serve tasks ------
 function startAppServer() {
   server.init({
-    notify: false,
     port: 9000,
+    notify: false,
+    ghostMode: false,
     server: {
-      baseDir: [`${paths.tmp}`, `${paths.src}`],
+      // baseDir: [`${paths.tmp}`, `${paths.src}`],
+      baseDir: [`${paths.src}`],
       routes: {
         '/node_modules': 'node_modules'
       },
@@ -71,23 +74,28 @@ function startAppServer() {
 }
 
 
-let serve = series(clean, parallel(styles, scripts), startAppServer);
+const compile = series(clean, parallel(styles, scripts));
+exports.compile = compile;
+
+let serve = series(compile, startAppServer);
 exports.serve = serve;
 
 
+
 // ----- Build tasks ------
-function compress() {
-  return src([`${paths.tmp}/*/**/*.{html,css,js}`, `${paths.src}/**/*.{html,js,jpg,gif,png}`])
+function moveFiles() {
+  return src([`${paths.src}/**/*.{html,css,js,jpg,gif,png,webp,mp4,webm}`])
     .pipe(dest(`${paths.dest}`));
-}
+};
+exports.moveFiles = moveFiles;
+
 
 function clean() {
   return del([`${paths.tmp}`, `${paths.dest}`])
 }
-
 exports.clean = clean;
 
-const build = series(clean, parallel(styles, scripts), compress);
 
+const build = series(compile, moveFiles);
 exports.build = build;
 exports.default = build;

@@ -1,17 +1,34 @@
 import DirectionReveal from './direction-reveal.js';
 
-// Swing animation (Default)
+// Swing (Default)
 const directionRevealSwing = DirectionReveal({
   selector: '.direction-reveal--demo-swing'
 });
 
-// Slide animation with all options specified
-const directionRevealSlide = DirectionReveal({
-  selector: '.direction-reveal--demo-slide',
+
+// Rotate (all options)
+const directionRevealRotate = DirectionReveal({
+  selector: '.direction-reveal--demo-rotate',
   itemSelector: '.direction-reveal__card',
-  animationName: 'slide',
+  animationName: 'rotate',
+  animationPostfixEnter: 'enter',
+  animationPostfixLeave: 'leave',
   enableTouch: true,
   touchThreshold: 250
+});
+
+
+// Flip
+const directionRevealFlip = DirectionReveal({
+  selector: '.direction-reveal--demo-flip',
+  animationName: 'flip'
+});
+
+
+// Slide 
+const directionRevealSlide = DirectionReveal({
+  selector: '.direction-reveal--demo-slide',
+  animationName: 'slide'
 });
 
 
@@ -21,23 +38,13 @@ const directionRevealSlidePush = DirectionReveal({
   animationName: 'slide'
 });
 
+
 // Roll out
 const directionRevealRollOut = DirectionReveal({
   selector: '.direction-reveal--demo-roll-out',
   animationName: 'roll-out'
 });
 
-// Rotate
-const directionRevealRotate = DirectionReveal({
-  selector: '.direction-reveal--demo-rotate',
-  animationName: 'rotate'
-});
-
-// Flip
-const directionRevealFlip = DirectionReveal({
-  selector: '.direction-reveal--demo-flip',
-  animationName: 'flip'
-});
 
 
 // Add a listener to an item to monitor direction changes 
