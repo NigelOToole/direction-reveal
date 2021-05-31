@@ -22,7 +22,8 @@ const DirectionReveal = function ({
   touchThreshold: touchThreshold = 250
   } = {}) {
 
-  const containers = document.querySelectorAll(selector);
+  const containers = typeof document !== "undefined" ? document.querySelectorAll(selector) : []
+
   let touchStart;
 
 
